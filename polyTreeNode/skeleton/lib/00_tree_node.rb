@@ -41,13 +41,19 @@ class PolyTreeNode
         if !children.include?(child_node)
             raise "Node is not a child!"
         end
-        child_node.parent=(nil)
+        child_node.parent=(nil) 
+    end
+    #   Write a #dfs(target_value) method which takes a value to 
+    #   search for and performs the search. Write this recursively.
+    # First, check the value at this node. If a node's value 
+    # matches the target value, return the node.
+    # If not, iterate through the #children and repeat.
+    def dfs(target_value)
+        return self if @value == target_value
         
     end
 
-    def to_s
-        @children
-    end
+
   
 end
 
