@@ -52,14 +52,7 @@ class PolyTreeNode
         end
         nil 
     end
-    #     Write a #bfs(target_value) method to implement breadth 
-    #     first search.
-    # You will use a local Array variable as a queue to implement this.
-    # First, insert the current node (self) into the queue.
-    # Then, in a loop that runs until the array is empty:
-    # Remove the first node from the queue,
-    # Check its value,
-    # Push the node's children to the end of the array.
+    
     def bfs(target_value)
         queue = [self]
 
@@ -70,19 +63,8 @@ class PolyTreeNode
         end
     end
 
+    def inspect 
+        @value.inspect
+    end
   
 end
-
-# node1 = PolyTreeNode.new("1")
-# node2 = PolyTreeNode.new("2")
-# node3 = PolyTreeNode.new("3")
-
-# node2.parent = node1
-# node3.parent = node1
-# # byebug
-# node3.parent = node2
-
-
-# node1.children.each do |child|
-#     p child.value
-# end
