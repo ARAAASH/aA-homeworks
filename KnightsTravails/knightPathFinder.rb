@@ -35,7 +35,9 @@ class KnightPathFinder
             move_tree << first_node
             one_moves_away = new_move_positions(first_node)
             one_moves_away.each do |pos|
-                bfs_queue << PolyTreeNode.new(pos)
+                tree_node = PolyTreeNode.new(pos)
+                tree_node.parent = first_node
+                bfs_queue << tree_node
             end
         end
         move_tree
@@ -50,11 +52,20 @@ class KnightPathFinder
     end
 
     def find_path(end_pos)
-        
+        end_node = @root_node.dfs(end_pos)
+        trace_path_back(end_node)
+    end
+
+    def trace_path_back(end_node)
+        result = []
+        result << end_node
+        until end_node == @root_node
+            end_node = end_node.parent
+            result << end_node
+        end
+        result.reverse 
     end
     
 
     
 end
-
-# k = KnightPathFinder.new([4,4])
