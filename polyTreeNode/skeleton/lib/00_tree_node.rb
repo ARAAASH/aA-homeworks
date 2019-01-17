@@ -50,7 +50,11 @@ class PolyTreeNode
     # If not, iterate through the #children and repeat.
     def dfs(target_value)
         return self if @value == target_value
-        
+        children.each do |child|
+            searh_result = child.dfs(target_value)
+            return searh_result if !searh_result.nil?
+        end
+        nil 
     end
 
 
