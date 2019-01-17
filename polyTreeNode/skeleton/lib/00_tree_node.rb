@@ -43,11 +43,7 @@ class PolyTreeNode
         end
         child_node.parent=(nil) 
     end
-    #   Write a #dfs(target_value) method which takes a value to 
-    #   search for and performs the search. Write this recursively.
-    # First, check the value at this node. If a node's value 
-    # matches the target value, return the node.
-    # If not, iterate through the #children and repeat.
+    
     def dfs(target_value)
         return self if @value == target_value
         children.each do |child|
@@ -56,7 +52,23 @@ class PolyTreeNode
         end
         nil 
     end
+    #     Write a #bfs(target_value) method to implement breadth 
+    #     first search.
+    # You will use a local Array variable as a queue to implement this.
+    # First, insert the current node (self) into the queue.
+    # Then, in a loop that runs until the array is empty:
+    # Remove the first node from the queue,
+    # Check its value,
+    # Push the node's children to the end of the array.
+    def bfs(target_value)
+        queue = [self]
 
+        until queue.empty?
+            first = queue.shift 
+            return first if first.value == target_value
+            first.children.each {|child| queue.push(child)}
+        end
+    end
 
   
 end
