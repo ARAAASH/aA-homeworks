@@ -29,9 +29,6 @@ class PolyTreeNode
         node.children << self if node != nil
         
     end
-# Write add_child(child_node) and remove_child(child_node) 
-# methods. 
-# These methods should be one- or two-liners that call #parent=.
     
     def add_child(child_node)
         child_node.parent=(self)
