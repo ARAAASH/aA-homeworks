@@ -24,7 +24,12 @@ def feed_me_a_fruit
 
   puts "Feed me a fruit! (Enter the name of a fruit:)"
   maybe_fruit = gets.chomp
-  reaction(maybe_fruit) 
+  begin
+    reaction(maybe_fruit)
+  rescue StandardError => e
+    "It is not a valid fruit!"
+  end
+   
 end  
 
 # PHASE 4
