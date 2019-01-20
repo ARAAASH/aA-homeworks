@@ -17,7 +17,7 @@ class CoffeeError < StandardError
   end
 end
 
-class NoFruitError
+class NoFruitError < StandardError
   def message
     "It is not a fruit!"
   end
@@ -51,9 +51,19 @@ end
 # PHASE 4
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
+    if yrs_known.to_i < 5
+      raise StandardError.new "Friendship is less than five years!"
+    end
+    if name.length <= 0
+      raise StandardError.new "You need to provide a name"
+    end
+    if fav_pastime.length <= 0
+      raise StandardError.new "You need to tell me your fav pastime"
+    end
     @name = name
-    @yrs_known = yrs_known
+    @yrs_known = yrs_known.to_i
     @fav_pastime = fav_pastime
+    
   end
 
   def talk_about_friendship
@@ -68,5 +78,3 @@ class BestFriend
     puts "Hey bestie, I made you a friendship bracelet. It says my name, #{@name}, so you never forget me." 
   end
 end
-
-
