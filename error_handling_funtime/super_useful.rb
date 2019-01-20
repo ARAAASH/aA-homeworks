@@ -1,33 +1,49 @@
 # PHASE 2
 def convert_to_int(str)
-  arr = str.split("")
-  digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-  unless arr.all? {|c| digits.include?(c)}
-    raise ArgumentError.new "The inputs is not a number!"
+  begin
+    num = Integer(str)
+  rescue ArgumentError => e
+    puts "Argument error"
   end
-  Integer(str)
+  num
 end
 
 # PHASE 3
 FRUITS = ["apple", "banana", "orange"]
 
+class CoffeeError < StandardError
+  def message
+    "No Coffee"
+  end
+end
+
+class NoFruitError
+  def message
+    "It is not a fruit!"
+  end
+end
+
 def reaction(maybe_fruit)
   if FRUITS.include? maybe_fruit
     puts "OMG, thanks so much for the #{maybe_fruit}!"
+  elsif maybe_fruit == "coffee"
+    raise CoffeeError
   else 
-    raise StandardError 
+    raise NoFruitError
   end 
 end
 
 def feed_me_a_fruit
   puts "Hello, I am a friendly monster. :)"
-
-  puts "Feed me a fruit! (Enter the name of a fruit:)"
-  maybe_fruit = gets.chomp
   begin
+    puts "Feed me a fruit! (Enter the name of a fruit:)"
+    maybe_fruit = gets.chomp
     reaction(maybe_fruit)
-  rescue StandardError => e
-    "It is not a valid fruit!"
+  rescue CoffeeError => e
+    puts e.message
+    retry 
+  rescue NoFruitError => e
+    puts e.message
   end
    
 end  
