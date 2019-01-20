@@ -21,6 +21,8 @@ class TicTacToeNode
     return true if @board.winner == opponent
     return false if @board.winner == us || @board.winner.nil?
 
+    self.children.all? {|child| child.losing_node?(self.next_mover_mark)}
+    
 
   end
 
@@ -33,14 +35,9 @@ class TicTacToeNode
     if @next_mover_mark == :x 
       mark = :o
     end
-    board_rows = @board.rows
-    board_rows.each_with_index do |row, i|
-      row.each_with_index do |ele, j|
-        pos = [i, j]
-        if @board.empty?(pos)
-          children << TicTacToeNode.new(@board.dup, mark, pos)
-        end
-      end
+    positions = [0,1,2].product([0,1,2])
+    positions.each do |pos|
+      children << TicTacToeNode.new(@board.dup, mark, pos) if @board.empty?(pos)  
     end
     children  
   end
