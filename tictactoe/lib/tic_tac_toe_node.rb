@@ -18,15 +18,6 @@ class TicTacToeNode
       # false in the case of a draw.
       return board.won? && board.winner != evaluator
     end
-    # us = evaluator
-    # if us == :x 
-    #   opponent = :o
-    # else 
-    #   opponent = :x
-    # end
-    # return true if @board.winner == opponent
-    # return false if @board.winner == us || @board.winner.nil?
-  
     if evaluator == self.next_mover_mark
  
       children.all? {|child| child.losing_node?(evaluator)}
@@ -38,6 +29,14 @@ class TicTacToeNode
   end
 
   def winning_node?(evaluator)
+    if board.over?
+      return board.winner == evaluator
+    end
+    if evaluator == self.next_mover_mark
+      children.any? {|child| child.winning_node?(evaluator)}
+    else
+      children.all? {|child| child.winning_node?(evaluator)}
+    end
   end
 
   def children
