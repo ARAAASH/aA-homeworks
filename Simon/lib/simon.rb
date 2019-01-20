@@ -31,8 +31,11 @@ class Simon
   def require_sequence
     puts "Enter the sequence: "
     puts "One color at a time: "
-    @seq.each_with_index do |color, i|
-      
+    @seq.each do |color|
+      input = gets.chomp 
+      if input != color
+        @game_over = true
+      end 
     end
 
   end
