@@ -27,6 +27,10 @@ class Board
   end
 
   def move_piece(start_pos, end_pos)
+    if start_pos.nil?
+      raise StandardError.new "There's no piece at this pos"
+    end
+    
   end
 
 end
