@@ -1,12 +1,14 @@
 require_relative "piece"
 
 class Rook < Piece
-  def initialize(color, board, position)
-    super
+  include "slidingPiece"
+  
+  def symbol
+    '♜'.colorize(color)
   end
 
-  def symbol
-    
+  def def move_dirs
+    [[-1, 0], [1, 0], [0, -1], [0, 1]]
   end
   
 end
