@@ -1,9 +1,25 @@
+require_relative "piece"
+
 class Board
   attr_reader :rows
   def initialize
     @rows = Array.new(8){Array.new(8)}
-    
-    @sentinel  
+    @sentinel = nil
+    board_setup
+  end
+
+  def board_setup
+    2.times do |i|
+      8.times do |j|
+        @rows[i][j] = Piece.new(:w, [i,j])
+        @rows[i+6][j] = Piece.new(:b, [i+6,j])
+      end
+    end
+    4.times do |i|
+      8.times do |j|
+        @rows[i+2][j] = nil
+      end
+    end
   end
 
   def [](pos)
@@ -14,3 +30,7 @@ class Board
   end
 
 end
+
+b = Board.new
+pos =[1,2]
+p b[pos]
