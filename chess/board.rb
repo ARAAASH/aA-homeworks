@@ -46,7 +46,7 @@ class Board
 
 end
 
-b = Board.new
-pos =[0,0]
-p b[pos]
-b.move_piece([5,3], [4,4])
+# b = Board.new
+# pos =[0,0]
+# p b[pos]
+# b.move_piece([5,3], [4,4])
