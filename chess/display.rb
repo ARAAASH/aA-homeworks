@@ -14,10 +14,10 @@ class Display
       8.times do |j|
         if @cursor.cursor_pos == [i, j]
           print ' ♜'.colorize(:red)
-        elsif @board[[i,j]] != nil
+        elsif !@board.empty?([i,j])
           print ' ♜'.colorize(:blue)
         else
-          print ' _'
+          print " " + @board.sentinel.symbol 
         end
       end
       puts

@@ -1,4 +1,4 @@
-require_relative "sildingPiece"
+# require_relative "sildingPiece"
 
 class Piece
   attr_accessor :color, :position
