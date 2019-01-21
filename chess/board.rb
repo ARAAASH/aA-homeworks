@@ -11,8 +11,8 @@ class Board
   def board_setup
     2.times do |i|
       8.times do |j|
-        @rows[i][j] = Piece.new(:w, self, [i,j])
-        @rows[i+6][j] = Piece.new(:b, self, [i+6,j])
+        @rows[i][j] = Piece.new(:blue, self, [i,j])
+        @rows[i+6][j] = Piece.new(:red, self, [i+6,j])
       end
     end
     4.times do |i|

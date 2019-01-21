@@ -13,9 +13,9 @@ class Display
     8.times do |i|
       8.times do |j|
         if @cursor.cursor_pos == [i, j]
-          print ' *'.colorize(:red)
+          print ' ♜'.colorize(:red)
         elsif @board[[i,j]] != nil
-          print ' P'.colorize(:blue)
+          print ' ♜'.colorize(:blue)
         else
           print ' _'
         end
