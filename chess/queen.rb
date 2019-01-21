@@ -1,4 +1,6 @@
 require_relative "piece"
+require_relative " slidingPiece"
+require "colorize"
 
 class Queen < Piece
   include SlidingPiece

@@ -1,3 +1,5 @@
+require_relative "steppingPiece"
+require "colorize"
 require_relative "piece"
 
 class Knight < Piece

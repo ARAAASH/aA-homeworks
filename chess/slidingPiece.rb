@@ -22,7 +22,7 @@ module SlidingPiece
       curr_x, curr_y = curr_x + dx, curr_y + dy
       position = [curr_x, curr_y]
       break until board.vali_pos?(position)
-      if board[position] == nil
+      if board.empty?(position)
         moves << position
       else
         if color != board[position].color

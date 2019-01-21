@@ -1,5 +1,4 @@
-require_relative "piece"
-require_relative "NUllPiece"
+require_relative "pieces"
 
 class Board
   attr_reader :rows, :sentinel
@@ -10,12 +9,31 @@ class Board
   end
 
   def board_setup
-    2.times do |i|
-      8.times do |j|
-        @rows[i][j] = Piece.new(:blue, self, [i,j])
-        @rows[i+6][j] = Piece.new(:red, self, [i+6,j])
-      end
+    fill_back_row(:bue)
+    fill_back_row(:red)
+    fill_front_row(:blue)
+    fill_front_row(:red)
+    fill_empty(:white)
+  end
+
+  def fill_back_row(color)
+    back_pieces = [
+      Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook
+    ]
+    i = color == :blue ? 7 : 0
+    back_pieces.each_with_index do |class_name, j|
+      class_name.new(color, self, [i, j])
     end
+  end
+
+  def fill_front_row(color)
+    i = color == :blue ? 6 : 1
+    8.times do |j|
+      Piece.new(color, self, [i,j])
+    end
+  end
+
+  def fill_empty(color)
     4.times do |i|
       8.times do |j|
         @rows[i+2][j] = @sentinel
@@ -57,7 +75,7 @@ class Board
 
 end
 
-#  b = Board.new
+#   b = Board.new
 #  pos =[0,0]
 # p b.empty?(pos)
 # p b[pos].position

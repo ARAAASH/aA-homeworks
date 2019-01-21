@@ -21,7 +21,7 @@ module SteppingPiece
 
     break until board.valid_pos?(position)
 
-    if board[position] == nil
+    if board.empty?(nil)
       moves << position
     else
         moves << position if board[position].color != color
