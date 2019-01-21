@@ -1,12 +1,13 @@
-# require_relative "board"
+
 
 class Piece
   attr_accessor :color, :position
-  def initialize(color, position)
+  def initialize(color, board, position)
     @color = color
-    # @board = board
+    @board = board
     @position = position
   end
+  
 
 
 end

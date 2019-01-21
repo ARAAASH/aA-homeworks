@@ -11,8 +11,8 @@ class Board
   def board_setup
     2.times do |i|
       8.times do |j|
-        @rows[i][j] = Piece.new(:w, [i,j])
-        @rows[i+6][j] = Piece.new(:b, [i+6,j])
+        @rows[i][j] = Piece.new(:w, self, [i,j])
+        @rows[i+6][j] = Piece.new(:b, self, [i+6,j])
       end
     end
     4.times do |i|
@@ -28,6 +28,11 @@ class Board
 
   def []=(pos, val)
     @rows[pos[0]][pos[1]] = val
+  end
+
+  def valid_pos?(pos)
+    x, y = pos
+    x >= 0 && x <= 7 && y >= 0 && y <= 7
   end
 
   def move_piece(start_pos, end_pos)
@@ -47,6 +52,6 @@ class Board
 end
 
 # b = Board.new
-# pos =[0,0]
-# p b[pos]
+#  pos =[0,0]
+#  p b[pos].position
 # b.move_piece([5,3], [4,4])
