@@ -1,8 +1,8 @@
 require_relative "piece"
 
 class Rook < Piece
-  include "slidingPiece"
-  
+  include SlidingPiece
+
   def symbol
     '♜'.colorize(color)
   end
