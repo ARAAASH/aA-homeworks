@@ -7,7 +7,9 @@ class Piece
     @board = board
     @position = position
   end
-  
+
+  def move
+  end
 
 
 end
