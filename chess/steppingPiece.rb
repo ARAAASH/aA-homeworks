@@ -19,12 +19,13 @@ module SteppingPiece
     curr_x, curr_y = curr_x+dx, curr_y+dy
     position = [curr_x, curr_y]
 
-    break until @board.valid_pos?(position)
-
-    if @board.empty?(position)
-      moves << position
-    else
-        moves << position if @board[position].color != color
+    if @board.valid_pos?(position)
+      # p position
+      if @board.empty?(position)
+        moves << position
+      else
+          moves << position if @board[position].color != color
+      end
     end
     moves
   end

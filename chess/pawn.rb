@@ -32,7 +32,7 @@ class Pawn < Piece
     x, y = x+dx, y+dy
     new_position = [x, y]
     if dx.abs != 2
-      if @board.empty?(new_position) && @board.valid_position?(new_position)
+      if @board.empty?(new_position) && @board.valid_pos?(new_position)
         moves << new_position
         position = new_position
       end
@@ -50,8 +50,10 @@ class Pawn < Piece
     x, y = self.position
     x, y = x+dx, y+dy
     position = [x, y]
-    if @board[position].color != self.color && @board.valid_position?(position)
-      moves << position
+    if @board.valid_pos?(position)
+      if @board[position].color != self.color
+        moves << position
+      end
     end
     moves
   end

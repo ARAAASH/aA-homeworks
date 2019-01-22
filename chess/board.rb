@@ -29,7 +29,7 @@ class Board
   def fill_front_row(color)
     i = color == :blue ? 6 : 1
     8.times do |j|
-      @rows[i][j] = Piece.new(color, self, [i,j])
+      @rows[i][j] = Pawn.new(color, self, [i,j])
     end
   end
 
@@ -67,7 +67,14 @@ class Board
     piece.position = end_pos
     self[start_pos] = @sentinel
     self[end_pos] = piece
+  end
 
+  def move_piece(start_pos, end_pos)
+    piece = self[start_pos]
+    raise "cannot move here" unless piece.valid_moves.include?(end_pos)
+    piece.position = end_pos
+    self[start_pos] = @sentinel
+    self[end_pos] = piece
   end
 
   def possible_move_piece?(start_pos, end_pos)
@@ -81,10 +88,10 @@ class Board
     col = color == :blue ? :red : :blue 
     pieces = pieces(col)
     # p pieces[0].color
-    p "king pos: #{king_position}"
+    # p "king pos: #{king_position}"
     pieces.any? do |piece|
       pos = piece.position
-      p "pos: #{pos}"
+      # p "pos: #{pos}"
       possible_move_piece?(pos, king_position)
     end
   end
@@ -131,14 +138,14 @@ class Board
 end
 
 b = Board.new
-pos = [7,0]
-p b[pos].is_a?(Piece)
+pos = [0,3]
+# p b[pos].is_a?(Knight)
 # p b.valid_pos?(pos)
- k = b[pos]
- p b.possible_move_piece?(pos, [2,0])
+  k = b[pos]
+# p b.possible_move_piece?(pos, [4,5])
 # b.in_check?(:red)
 # p k
-#  p k.valid_moves
+ p k.valid_moves
 # p b[pos].color
 # p b.pieces(:blue).length
 # b[pos] = Piece.new(:white, b, pos)
