@@ -9,7 +9,7 @@ class Board
   end
 
   def board_setup
-    fill_back_row(:bue)
+    fill_back_row(:blue)
     fill_back_row(:red)
     fill_front_row(:blue)
     fill_front_row(:red)
@@ -22,14 +22,14 @@ class Board
     ]
     i = color == :blue ? 7 : 0
     back_pieces.each_with_index do |class_name, j|
-      class_name.new(color, self, [i, j])
+      @rows[i][j] = class_name.new(color, self, [i, j])
     end
   end
 
   def fill_front_row(color)
     i = color == :blue ? 6 : 1
     8.times do |j|
-      Piece.new(color, self, [i,j])
+      @rows[i][j] = Piece.new(color, self, [i,j])
     end
   end
 
@@ -49,15 +49,17 @@ class Board
     @rows[pos[0]][pos[1]] = val
   end
 
+  def empty?(pos)
+    x, y = pos
+    @rows[x][y] == @sentinel
+  end
+
   def valid_pos?(pos)
     x, y = pos
     x >= 0 && x <= 7 && y >= 0 && y <= 7
   end
 
-  def empty?(pos)
-    x, y = pos
-    @rows[x][y] == @sentinel
-  end
+  
 
   def move_piece(start_pos, end_pos)
     if self.empty?(start_pos)
@@ -76,7 +78,8 @@ class Board
 end
 
 #   b = Board.new
-#  pos =[0,0]
-# p b.empty?(pos)
+#   pos =[0,0]
+#  p b.empty?(pos)
+#  p b[pos].nil?
 # p b[pos].position
 # b.move_piece([0,3], [4,4])
