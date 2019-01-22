@@ -13,7 +13,7 @@ class Display
     8.times do |i|
       8.times do |j|
         if @cursor.cursor_pos == [i, j]
-          print "  " + board[[i,j]].symbol
+          print "  " + board[[i,j]].symbol.colorize(:yellow)
         elsif !@board.empty?([i,j])
           print "  " + board[[i,j]].symbol
         else
