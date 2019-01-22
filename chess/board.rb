@@ -137,15 +137,15 @@ class Board
 
 end
 
-b = Board.new
-pos = [0,3]
+# b = Board.new
+# pos = [0,3]
 # p b[pos].is_a?(Knight)
 # p b.valid_pos?(pos)
-  k = b[pos]
+  # k = b[pos]
 # p b.possible_move_piece?(pos, [4,5])
 # b.in_check?(:red)
 # p k
- p k.valid_moves
+#  p k.valid_moves
 # p b[pos].color
 # p b.pieces(:blue).length
 # b[pos] = Piece.new(:white, b, pos)
