@@ -72,6 +72,7 @@ class Board
 
   def possible_move_piece?(start_pos, end_pos)
     piece = self[start_pos]
+    p piece
     piece.moves.include?(end_pos)
   end
 
@@ -126,8 +127,11 @@ class Board
 
 end
 
-# b = Board.new
-# pos = [0,1]
+b = Board.new
+pos = [0,1]
+k = b[pos]
+# p k
+p k.valid_moves
 # p b[pos].color
 # p b.pieces(:blue).length
 # b[pos] = Piece.new(:white, b, pos)

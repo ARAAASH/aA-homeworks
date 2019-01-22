@@ -8,6 +8,8 @@ class Piece
     @position = position
   end
 
+
+
   def symbol
     'P'.colorize(color)
   end

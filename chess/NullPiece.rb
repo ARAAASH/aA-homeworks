@@ -11,5 +11,8 @@ class NullPiece < Piece
     @color = :white
   end
 
+  def moves
+  end
+
   
 end
