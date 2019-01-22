@@ -12,10 +12,8 @@ class Piece
     'P'.colorize(color)
   end
 
-  def valid_moves(end_pos)
-    valid_moves = []
-    @board.move_piece!(position, end_pos) unless move_into_check?(end_pos)
-    
+  def valid_moves
+    moves.reject {|end_pos| move_into_check?(end_pos)}
   end
 
   def move_into_check?(end_pos)
