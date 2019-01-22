@@ -13,8 +13,5 @@ class Piece
     'P'.colorize(color)
   end
 
-  def move
-  end
-
 
 end

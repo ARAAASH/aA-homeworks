@@ -1,6 +1,6 @@
 module SteppingPiece
   
-  def move
+  def moves
     moves = []
     move_diffs.each do |x, y|
       moves.concat(move_steps(x,y))
@@ -19,12 +19,12 @@ module SteppingPiece
     curr_x, curr_y = curr_x+dx, curr_y+dy
     position = [curr_x, curr_y]
 
-    break until board.valid_pos?(position)
+    break until @board.valid_pos?(position)
 
-    if board.empty?(nil)
+    if @board.empty?(position)
       moves << position
     else
-        moves << position if board[position].color != color
+        moves << position if @board[position].color != color
     end
     moves
   end

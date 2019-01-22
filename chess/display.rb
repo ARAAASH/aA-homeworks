@@ -27,6 +27,10 @@ class Display
   
 end
 
-b = Board.new
-d = Display.new(b)
-d.render
+# b = Board.new
+# d = Display.new(b)
+# d.render
+# b.move_piece!([0,1], [2,0])
+# d.render
+# b.move_piece!([2,0], [4,1])
+# d.render

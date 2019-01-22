@@ -59,16 +59,16 @@ class Board
     x >= 0 && x <= 7 && y >= 0 && y <= 7
   end
 
-  
-
-  def move_piece(start_pos, end_pos)
-    if self.empty?(start_pos)
-      raise StandardError.new "There's no piece at this pos"
-    end
-    if !self.empty?(end_pos)
-      raise StandardError.new "Piece cannot move to #{end_pos}"
-    end
+  # move without performing checks
+  def move_piece!(start_pos, end_pos)
     piece = self[start_pos]
+    raise "cannot move here" unless piece.moves.include?(end_pos)
+    # if self.empty?(start_pos)
+    #   raise StandardError.new "There's no piece at this pos"
+    # end
+    # if !self.empty?(end_pos) 
+    #   raise StandardError.new "Piece cannot move to #{end_pos}"
+    # end
     piece.position = end_pos
     self[start_pos] = @sentinel
     self[end_pos] = piece
@@ -77,7 +77,9 @@ class Board
 
 end
 
-#   b = Board.new
+# b = Board.new
+# d = Display.new(b)
+# d.render
 #   pos =[0,0]
 #  p b.empty?(pos)
 #  p b[pos].nil?
