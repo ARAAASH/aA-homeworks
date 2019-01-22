@@ -72,7 +72,7 @@ class Board
 
   def possible_move_piece?(start_pos, end_pos)
     piece = self[start_pos]
-    p piece
+    # p piece
     piece.moves.include?(end_pos)
   end
 
@@ -80,8 +80,11 @@ class Board
     king_position = king_pos(color)
     col = color == :blue ? :red : :blue 
     pieces = pieces(col)
+    # p pieces[0].color
+    p "king pos: #{king_position}"
     pieces.any? do |piece|
       pos = piece.position
+      p "pos: #{pos}"
       possible_move_piece?(pos, king_position)
     end
   end
@@ -128,10 +131,14 @@ class Board
 end
 
 b = Board.new
-pos = [0,1]
-k = b[pos]
+pos = [7,0]
+p b[pos].is_a?(Piece)
+# p b.valid_pos?(pos)
+ k = b[pos]
+ p b.possible_move_piece?(pos, [2,0])
+# b.in_check?(:red)
 # p k
-p k.valid_moves
+#  p k.valid_moves
 # p b[pos].color
 # p b.pieces(:blue).length
 # b[pos] = Piece.new(:white, b, pos)
