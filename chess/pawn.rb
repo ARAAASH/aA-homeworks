@@ -9,7 +9,13 @@ class Pawn < Piece
 
   def moves
     moves = []
-    dx, dy = move_dirs
+    move_dirs.each do |dx, dy|
+      moves.concat(move_forward_not_blocked(dx, dy))
+    end
+    side_attacks.each do |dx, dy|
+      moves.concat(attack_moves(dx,dy))
+    end
+    moves
   end
 
   def move_dirs
