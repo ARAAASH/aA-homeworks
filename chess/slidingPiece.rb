@@ -1,6 +1,6 @@
 module SlidingPiece
   
-  def move
+  def moves
     # array of places that a piece can move to
     moves = []
     move_dirs.each do |x ,y|
