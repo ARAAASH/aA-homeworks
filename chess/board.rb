@@ -90,14 +90,14 @@ class Board
     valids_bol = pieces.none? {|piece| piece.valid_moves.empty?}
     valids_bol && in_check?(color)
   end
-  
+
   def pieces(color)
     pieces = []
     8.times do |i|
       8.times do |j|
         pos = [i,j]
-        if @board[pos].color == color
-          pieces << @board[pos]
+        if self[pos].color == color
+          pieces << self[pos]
         end
       end
     end 
@@ -108,20 +108,32 @@ class Board
     8.times do |i|
       8.times do |j|
         pos = [i,j]
-        if @board[pos].is_a?(King) && @board[pos].color == color
+        if self[pos].is_a?(King) && self[pos].color == color
           return pos
         end
       end
     end 
   end
 
+  def dup
+    new_board = Board.new
+    pieces = pieces(:red) + pieces(:blue)
+    pieces.each do |piece|
+      piece.class.new(piece.color, new_board, piece.position)
+    end
+    new_board
+  end
+
 end
 
 # b = Board.new
-# d = Display.new(b)
-# d.render
-#   pos =[0,0]
-#  p b.empty?(pos)
-#  p b[pos].nil?
-# p b[pos].position
-# b.move_piece([0,3], [4,4])
+# pos = [0,1]
+# p b[pos].color
+# p b.pieces(:blue).length
+# b[pos] = Piece.new(:white, b, pos)
+# p b[pos].color
+# c = b.dup
+# p c[pos].color
+# b[pos] = Piece.new(:white, b, pos)
+# p b[pos].color
+# # p c[pos].color
