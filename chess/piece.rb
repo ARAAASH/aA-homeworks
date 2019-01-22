@@ -13,5 +13,7 @@ class Piece
     'P'.colorize(color)
   end
 
+  
+
 
 end

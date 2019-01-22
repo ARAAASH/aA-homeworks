@@ -63,16 +63,50 @@ class Board
   def move_piece!(start_pos, end_pos)
     piece = self[start_pos]
     raise "cannot move here" unless piece.moves.include?(end_pos)
-    # if self.empty?(start_pos)
-    #   raise StandardError.new "There's no piece at this pos"
-    # end
-    # if !self.empty?(end_pos) 
-    #   raise StandardError.new "Piece cannot move to #{end_pos}"
-    # end
+   
     piece.position = end_pos
     self[start_pos] = @sentinel
     self[end_pos] = piece
 
+  end
+
+  def possible_move_piece?(start_pos, end_pos)
+    piece = self[start_pos]
+    piece.moves.include?(end_pos)
+  end
+
+  def in_check?(color)
+    king_position = king_pos(color)
+    col = color == :blue ? :red : :blue 
+    pieces = pieces(col)
+    pieces.any? do |piece|
+      pos = piece.position
+      possible_move_piece?(pos, king_position)
+    end
+  end
+
+  def pieces(color)
+    pieces = []
+    8.times do |i|
+      8.times do |j|
+        pos = [i,j]
+        if @board[pos].color == color
+          pieces << @board[pos]
+        end
+      end
+    end 
+    pieces
+  end
+
+  def king_pos(color)
+    8.times do |i|
+      8.times do |j|
+        pos = [i,j]
+        if @board[pos].is_a?(King) && @board[pos].color == color
+          return pos
+        end
+      end
+    end 
   end
 
 end
