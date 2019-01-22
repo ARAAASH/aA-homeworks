@@ -85,6 +85,12 @@ class Board
     end
   end
 
+  def checkmate?(color)
+    pieces = pieces(color)
+    valids_bol = pieces.none? {|piece| piece.valid_moves.empty?}
+    valids_bol && in_check?(color)
+  end
+  
   def pieces(color)
     pieces = []
     8.times do |i|
