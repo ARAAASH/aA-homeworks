@@ -4,9 +4,9 @@ require "byebug"
 class Board
   attr_reader :rows, :sentinel
   def initialize(fill_board = true)
-    @rows = Array.new(8) { Array.new(8, sentinel) }
     @sentinel = NullPiece.instance
-    if fill_board
+    @rows = Array.new(8) { Array.new(8, sentinel) }
+    if fill_board == true
       board_setup
     end
   end
@@ -16,7 +16,6 @@ class Board
     fill_back_row(:red)
     fill_front_row(:blue)
     fill_front_row(:red)
-    # fill_empty(:white)
   end
 
   def fill_back_row(color)
@@ -36,20 +35,18 @@ class Board
     end
   end
 
-  def fill_empty(color)
-    4.times do |i|
-      8.times do |j|
-        @rows[i+2][j] = @sentinel
-      end
-    end
-  end
-
   def [](pos)
     @rows[pos[0]][pos[1]]
   end
 
   def []=(pos, val)
     @rows[pos[0]][pos[1]] = val
+  end
+
+  def add_piece(piece, pos)
+    raise 'position not empty' unless empty?(pos)
+
+    self[pos] = piece
   end
 
   def empty?(pos)
@@ -65,11 +62,7 @@ class Board
   # move without performing checks
   def move_piece!(start_pos, end_pos)
     piece = self[start_pos]
-  #   p " piece in move_piece!: #{piece}"
-  #   # p "start: #{start_pos}, end: #{end_pos}"
     raise StandardError.new("cannot move here") unless piece.moves.include?(end_pos)
-
-  #   move_piece!(start_pos, end_pos)
     self[end_pos] = piece
     self[start_pos] = @sentinel
     piece.position = end_pos
@@ -94,7 +87,7 @@ class Board
 
   def possible_move_piece?(start_pos, end_pos)
     piece = self[start_pos]
-    # p piece
+   
     piece.moves.include?(end_pos)
   end
 
@@ -102,11 +95,10 @@ class Board
     king_position = king_pos(color)
     col = color == :blue ? :red : :blue 
     pieces = pieces(col)
-    # p pieces[0].color
-    # p "king pos: #{king_position}"
+  
     pieces.any? do |piece|
       pos = piece.position
-      # p "pos: #{pos}"
+     
       possible_move_piece?(pos, king_position)
     end
   end
@@ -145,29 +137,10 @@ class Board
     new_board = Board.new(false)
     pieces = pieces(:red) + pieces(:blue)
     pieces.each do |piece|
-      p "#{piece.class} + #{piece.position}"
+      # p "#{piece.class} + #{piece.position}"
       piece.class.new(piece.color, new_board, piece.position)
     end
     new_board
   end
 
 end
-
-# b = Board.new
-# pos = [0,3]
-# p b[pos].is_a?(Knight)
-# p b.valid_pos?(pos)
-  # k = b[pos]
-# p b.possible_move_piece?(pos, [4,5])
-# b.in_check?(:red)
-# p k
-#  p k.valid_moves
-# p b[pos].color
-# p b.pieces(:blue).length
-# b[pos] = Piece.new(:white, b, pos)
-# p b[pos].color
-# c = b.dup
-# p c[pos].color
-# b[pos] = Piece.new(:white, b, pos)
-# p b[pos].color
-# # p c[pos].color

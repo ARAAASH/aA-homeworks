@@ -6,12 +6,13 @@ class Piece
     @color = color
     @board = board
     @position = position
+    board.add_piece(self, position)
   end
 
 
 
   def symbol
-    'P'.colorize(color)
+  
   end
 
   def valid_moves
@@ -21,9 +22,6 @@ class Piece
 
   def move_into_check?(end_pos)
     new_board = @board.dup
-    # p position
-    p "board: #{@board[position]}"
-    p new_board[position]
     new_board.move_piece!(position, end_pos)
     new_board.in_check?(color)
   end
