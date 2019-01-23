@@ -22,6 +22,8 @@ class Piece
   def move_into_check?(end_pos)
     new_board = @board.dup
     # p position
+    p "board: #{@board[position]}"
+    p new_board[position]
     new_board.move_piece!(position, end_pos)
     new_board.in_check?(color)
   end

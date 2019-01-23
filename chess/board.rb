@@ -3,10 +3,12 @@ require "byebug"
 
 class Board
   attr_reader :rows, :sentinel
-  def initialize
-    @rows = Array.new(8){Array.new(8)}
+  def initialize(fill_board = true)
+    @rows = Array.new(8) { Array.new(8, sentinel) }
     @sentinel = NullPiece.instance
-    board_setup
+    if fill_board
+      board_setup
+    end
   end
 
   def board_setup
@@ -14,7 +16,7 @@ class Board
     fill_back_row(:red)
     fill_front_row(:blue)
     fill_front_row(:red)
-    fill_empty(:white)
+    # fill_empty(:white)
   end
 
   def fill_back_row(color)
@@ -23,14 +25,14 @@ class Board
     ]
     i = color == :blue ? 7 : 0
     back_pieces.each_with_index do |class_name, j|
-      @rows[i][j] = class_name.new(color, self, [i, j])
+      class_name.new(color, self, [i, j])
     end
   end
 
   def fill_front_row(color)
     i = color == :blue ? 6 : 1
     8.times do |j|
-      @rows[i][j] = Pawn.new(color, self, [i,j])
+      Pawn.new(color, self, [i,j])
     end
   end
 
@@ -90,19 +92,6 @@ class Board
     move_piece!(start_pos, end_pos)
   end
 
-
-  # def move_piece(start_pos, end_pos)
-  #   piece = self[start_pos]
-  #   p "valid moves: #{piece.valid_moves}"
-  #   # if !piece.valid_moves.include?(end_pos)
-  #   #   raise StandardError.new "cannot move here"
-  #   # end
-  #   raise StandardError.new("cannot move here") unless piece.valid_moves.include?(end_pos)
-  #   piece.position = end_pos
-  #   self[start_pos] = @sentinel
-  #   self[end_pos] = piece
-  # end
-
   def possible_move_piece?(start_pos, end_pos)
     piece = self[start_pos]
     # p piece
@@ -153,9 +142,10 @@ class Board
   end
 
   def dup
-    new_board = Board.new
+    new_board = Board.new(false)
     pieces = pieces(:red) + pieces(:blue)
     pieces.each do |piece|
+      p "#{piece.class} + #{piece.position}"
       piece.class.new(piece.color, new_board, piece.position)
     end
     new_board
