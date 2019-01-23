@@ -62,22 +62,45 @@ class Board
   # move without performing checks
   def move_piece!(start_pos, end_pos)
     piece = self[start_pos]
-    # p " piece in move_piece!: #{piece}"
-    # p "start: #{start_pos}, end: #{end_pos}"
-    raise "cannot move here" unless piece.moves.include?(end_pos)
-   
-    piece.position = end_pos
-    self[start_pos] = @sentinel
+  #   p " piece in move_piece!: #{piece}"
+  #   # p "start: #{start_pos}, end: #{end_pos}"
+    raise StandardError.new("cannot move here") unless piece.moves.include?(end_pos)
+
+  #   move_piece!(start_pos, end_pos)
     self[end_pos] = piece
+    self[start_pos] = @sentinel
+    piece.position = end_pos
+    nil
+  end
+  
+
+  def move_piece(turn_color, start_pos, end_pos)
+    raise 'start position is empty' if empty?(start_pos)
+
+    piece = self[start_pos]
+    if piece.color != turn_color
+      raise 'You must move your own piece'
+    elsif !piece.moves.include?(end_pos)
+      raise 'Piece does not move like that'
+    elsif !piece.valid_moves.include?(end_pos)
+      raise 'You cannot move into check'
+    end
+
+    move_piece!(start_pos, end_pos)
   end
 
-  def move_piece(start_pos, end_pos)
-    piece = self[start_pos]
-    raise "cannot move here" unless piece.valid_moves.include?(end_pos)
-    piece.position = end_pos
-    self[start_pos] = @sentinel
-    self[end_pos] = piece
-  end
+
+  # def move_piece(start_pos, end_pos)
+  #   piece = self[start_pos]
+  #   p "valid moves: #{piece.valid_moves}"
+  #   # if !piece.valid_moves.include?(end_pos)
+  #   #   raise StandardError.new "cannot move here"
+  #   # end
+  #   raise StandardError.new("cannot move here") unless piece.valid_moves.include?(end_pos)
+  #   piece.position = end_pos
+  #   self[start_pos] = @sentinel
+  #   self[end_pos] = piece
+  # end
 
   def possible_move_piece?(start_pos, end_pos)
     piece = self[start_pos]

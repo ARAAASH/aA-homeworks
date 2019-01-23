@@ -12,17 +12,17 @@ class HumanPlayer < Player
     end_pos = []
     c = nil
 
-    while c == nil || self.display.board[c].is_a?(NullPiece) || self.display.board[c].color != self.color
+    while c == nil 
       
       c = self.display.cursor.get_input
       system("clear")
       self.display.render
-
+      
     end
     start_pos = c
 
     c = nil
-    while c == nil || self.display.board[c].color == self.color
+    while c == nil 
       c = self.display.cursor.get_input
       system("clear")
       self.display.render
