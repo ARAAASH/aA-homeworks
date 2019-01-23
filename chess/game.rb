@@ -29,17 +29,17 @@ class Game
 
   def play
     loop do
+      begin
       puts "It's #{@curr_player.color}'s turn"
       pos = @curr_player.make_move
       start_pos, end_pos = pos
-      # p pos
-      begin
+     
         @board.move_piece(@curr_player.color, start_pos, end_pos)
       rescue => e
         puts "Something went wrong: #{e.message}"
+        retry
       end 
-      # @board.move_piece(start_pos, end_pos)
-      # system("clear")
+      
       @display.render
       
       swap_turn!
