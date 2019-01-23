@@ -21,16 +21,14 @@ module SlidingPiece
     loop do
       curr_x, curr_y = curr_x + dx, curr_y + dy
       position = [curr_x, curr_y]
-      # p @board.valid_pos?(position)
       break if !@board.valid_pos?(position)
       if board.empty?(position)
         moves << position
       else
-        # p position
         if color != @board[position].color
           moves << position
-          break
         end
+        break
       end
     end
     moves

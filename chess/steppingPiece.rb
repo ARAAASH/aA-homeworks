@@ -25,6 +25,7 @@ module SteppingPiece
         moves << position
       else
           moves << position if @board[position].color != color
+          
       end
     end
     moves

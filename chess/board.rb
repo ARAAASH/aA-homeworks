@@ -62,6 +62,8 @@ class Board
   # move without performing checks
   def move_piece!(start_pos, end_pos)
     piece = self[start_pos]
+    # p " piece in move_piece!: #{piece}"
+    # p "start: #{start_pos}, end: #{end_pos}"
     raise "cannot move here" unless piece.moves.include?(end_pos)
    
     piece.position = end_pos
