@@ -16,7 +16,6 @@ class Piece
   end
 
   def valid_moves
-    p "all the possible moves: #{self.moves}"
     self.moves.reject {|end_pos| move_into_check?(end_pos)}
   end
 
