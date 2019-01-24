@@ -37,6 +37,10 @@ class Board
       l = @cups[start_pos].length
       @cups[start_pos].delete(:stone)
       l.times {|i| stones << :stone}
+      stones.each do |stone|
+        if current_player_name == @name1 
+          @cups[]
+      end
 
     end
   end
