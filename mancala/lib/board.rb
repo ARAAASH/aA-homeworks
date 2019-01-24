@@ -2,6 +2,7 @@ class Board
   attr_accessor :cups
 
   def initialize(name1, name2)
+    @name1, @name2 = name1, name2
     @cups = []
     place_stones
   end
@@ -27,11 +28,17 @@ class Board
     elsif @cups[start_pos].empty?
       raise "Starting cup is empty"
     end
-    # raise "Invalid starting cup" if !valid_start?(start_pos)
-    # raise "Starting cup is empty" if @cups[start_pos].empty?
+    true
   end
   
   def make_move(start_pos, current_player_name)
+    stones = []
+    if valid_move?(start_pos)
+      l = @cups[start_pos].length
+      @cups[start_pos].delete(:stone)
+      l.times {|i| stones << :stone}
+
+    end
   end
 
   def next_turn(ending_cup_idx)
