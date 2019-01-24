@@ -1,3 +1,4 @@
+
 class Board
   attr_accessor :cups
 
@@ -37,16 +38,61 @@ class Board
       l = @cups[start_pos].length
       @cups[start_pos].delete(:stone)
       l.times {|i| stones << :stone}
-      stones.each do |stone|
-        if current_player_name == @name1 
-          @cups[]
-      end
-
+      
+      end_pos = dist_stones_curr_players(stones, start_pos, current_player_name)
+      render
+     
+      next_turn(end_pos, current_player_name)
+    
     end
   end
 
-  def next_turn(ending_cup_idx)
-    # helper method to determine whether #make_move returns :switch, :prompt, or ending_cup_idx
+  def dist_stones_curr_players(stones, start, curr_player_name)
+    i = start + 1
+    if curr_player_name == @name1
+      until stones.empty?
+        @cups[i] << stones.shift unless i == 13
+        j = i
+        i += 1
+        if i > 13
+          i = 0
+        end
+      end
+    else 
+      until stones.empty?
+        @cups[i] << stones.shift unless i == 6
+        j = i
+        i += 1
+        if i > 13
+          i = 0
+        end
+      end
+    end
+    j
+  end
+
+  def next_turn(ending_cup_idx, curr_player_name)
+   
+    @cups[ending_cup_idx].shift
+   
+    if @cups[ending_cup_idx].empty? && ending_cup_idx != 6 && ending_cup_idx != 13
+    
+      @cups[ending_cup_idx] << :stone
+      return :switch
+    end
+
+    @cups[ending_cup_idx] << :stone
+   
+    if ending_cup_idx == 6 && curr_player_name == @name1
+      
+      return :prompt
+    elsif ending_cup_idx == 13 && curr_player_name == @name2
+    
+      return :prompt
+    else
+     
+      return ending_cup_idx
+    end
   end
 
   def render
@@ -58,8 +104,15 @@ class Board
   end
 
   def one_side_empty?
+    @cups[0..5].all? {|cup| cup.empty?} || @cups[7..12].all? {|cup| cup.empty?}
   end
 
   def winner
+    scores1 = @cups[6].length
+    scores2 = @cups[13].length
+    return :draw if scores1 == scores2
+    name = scores1 > scores2 ? @name1 : @name2
+    return name
+    
   end
 end
