@@ -57,4 +57,3 @@ def stock_picker(array)
   idx_diff = diff.index(max_diff)
   return [days[2][0], days[2][1]]
 end
-
