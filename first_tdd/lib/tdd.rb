@@ -28,4 +28,16 @@ def two_sum(array)
   
 end
 
-two_sum([-1, 0, 2, -2, 1])
+def my_transpose(array)
+  res = []
+  n = array.length
+  n.times do |j|
+    arr = []
+    n.times do |i|
+      arr << array[i][j]
+    end
+    res << arr
+  end
+  res
+end
+

@@ -35,3 +35,27 @@ describe "#two_sum" do
   end
 
 end
+
+describe "#my_transpose" do
+  subject(:array) { [[0,1,2],[3,4,5],[6,7,8]] }
+  let(:emp) {[]}
+
+  it "no changes in the first and last element" do
+    expect(my_transpose(array)[0][0]).to eq(array[0][0])
+    expect(my_transpose(array)[-1][-1]).to eq(array[-1][-1])
+  end
+
+  it "output has the same size" do
+    expect(my_transpose(array).length).to eq(array.length)
+    expect(my_transpose(array)[0].length).to eq(array[0].length)
+  end
+
+  it "exchanges the elemets between rows and columns" do
+    expect(my_transpose(array)[1][2]).to eq(array[2][1])
+  end
+
+  it "doesn't do anything to an empty array" do
+    expect(my_transpose(emp)).to eq([])
+  end
+
+end
