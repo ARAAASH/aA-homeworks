@@ -41,3 +41,20 @@ def my_transpose(array)
   res
 end
 
+def stock_picker(array)
+  days = []
+  array.each_with_index do |ele, i|
+    if i < array.length - 1
+      j = i + 1
+      ele2 = array[j..-1].max
+      idx = array.index(ele2)
+      days << [i, idx, ele2 - ele]
+    end
+  end
+  col_days = days.transpose
+  diff = col_days[0]
+  max_diff = diff.max
+  idx_diff = diff.index(max_diff)
+  return [days[2][0], days[2][1]]
+end
+

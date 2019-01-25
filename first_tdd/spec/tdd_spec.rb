@@ -59,3 +59,16 @@ describe "#my_transpose" do
   end
 
 end
+
+describe "#stock_picker" do
+  subject(:stocks) { [90, 87, 86, 90, 91, 92, 85] }
+
+  it "second element is higher than the first element" do
+    expect(stock_picker(stocks)[0]).to be < stock_picker(stocks)[1]
+  end
+
+  it "doesn't sell stock before buy it" do
+    expect(stock_picker(stocks)).to eq([2,5])
+    expect(stock_picker(stocks)).not_to eq([6,5])
+  end
+end
