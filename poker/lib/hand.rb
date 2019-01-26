@@ -129,6 +129,17 @@ class Hand
   end
 
   def highest_card
-    
+    card_values = []
+    idx = []
+    cards.each_with_index do |card, i| 
+      return card if card.rank == 'A'
+      idx << i
+      card_values << card.get_value
+    end
+    max_val = card_values.max
+    index_max = card_values.index(max_val)
+    index = idx[index_max]
+    return cards[index]
   end
+
 end

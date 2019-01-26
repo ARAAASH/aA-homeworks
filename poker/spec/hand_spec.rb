@@ -96,5 +96,12 @@ describe Hand do
     end
   end
 
+  describe "#highest_card" do 
+    let(:card2) { double('card2', :rank => '2', :get_value => 2, :suit => 'spades') }
+    it "return the most valuable card in hand" do 
+      expect(hand.highest_card).to eq(card3)
+    end
+  end
+
 
 end
