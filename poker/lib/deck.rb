@@ -4,12 +4,11 @@ class Deck
     '8', '9', '10', 'J', 'Q', 'K']
   SUITS = ['diamonds', 'clubs', 'hearts', 'spades']
 
-  attr_reader :cards
+  attr_reader :cards_deck
   def initialize
-    @cards = generate_cards
-    # 52.times {|i| @cards << Card.new('5', 'clubs')}
-    
+    @cards_deck = generate_cards
   end
+
 
   private 
   def generate_cards
