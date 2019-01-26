@@ -84,4 +84,17 @@ describe Hand do
     end
   end
 
+  describe "#evaluate_my_hand" do 
+    it "returns the highest rank of hand" do
+      expect(hand.evaluate_my_hand).to eq(:straight_flush)
+    end
+  end
+
+  describe "#hand_rank" do 
+    it "returns ranks as an integer compare to otheres" do 
+      expect(hand.hand_rank).to eq(9)
+    end
+  end
+
+
 end

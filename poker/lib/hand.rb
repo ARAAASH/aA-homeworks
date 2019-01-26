@@ -1,7 +1,20 @@
-require_relative "deck"
+# require_relative "deck"
 require_relative "card"
 
 class Hand
+
+  RANKS = {
+    :high_card => 1,
+    :pair => 2,
+    :two_pairs => 3,
+    :three_of_a_kind => 4,
+    :straight => 5,
+    :flush => 6,
+    :full_house => 7,
+    :four_of_a_kind => 8,
+    :straight_flush => 9
+  }
+
   attr_reader :cards
   def initialize(cards)
     @cards = cards
@@ -79,8 +92,6 @@ class Hand
 
   end
 
-
-
   def sequence?
     card_values = []
     cards.each { |card| card_values << card.get_value }
@@ -100,4 +111,24 @@ class Hand
     kinds.length - kinds.uniq.length + 1
   end
 
+  def evaluate_my_hand
+    return :straight_flush if self.straight_flush?
+    return :four_of_a_kind if self.four_of_a_kind?
+    return :full_house if self.full_house?
+    return :flush if self.flush?
+    return :straight if self.straight?
+    return :three_of_a_kind if self.three_of_a_kind?
+    return :two_pairs if self.two_pairs?
+    return :pair if self.pair? 
+    return :high_card 
+
+  end
+
+  def hand_rank
+    RANKS[evaluate_my_hand]
+  end
+
+  def highest_card
+    
+  end
 end
