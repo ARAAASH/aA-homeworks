@@ -16,6 +16,12 @@ class Node
   def remove
     # optional but useful, connects previous link to next link
     # and removes self from list.
+    self.prev.next = self.next if self.prev
+    self.next.prev = self.prev if self.next
+    self.next = nil
+    self.prev = nil
+    self
+
   end
 end
 
@@ -89,18 +95,30 @@ class LinkedList
     end
   end
 
-  def remove(key)
-    if include?(key)
-      node = head
-      until node == tail.prev
-        node = node.next
-        if node.key == key
-          node.prev.next = node.next
-          node.next.prev = node.prev
+  # def remove(key)
+  #   # if include?(key)
+  #     node = head
+  #     until node == tail.prev
+  #       node = node.next
+  #       if node.key == key
+  #         node.prev.next = node.next
+  #         node.next.prev = node.prev
           
-        end
+  #       end
+  #     end
+  #   # end
+  #   nil
+  # end
+
+  def remove(key)
+    each do |node|
+      if node.key == key
+        node.remove
+        return node.val
       end
     end
+
+    nil
   end
 
   def each
