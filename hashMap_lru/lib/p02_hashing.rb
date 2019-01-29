@@ -27,6 +27,11 @@ end
 
 class String
   def hash
+    num = 0
+    self.each_char.with_index do |c, i|
+      num += c.ord * i
+    end
+    num ^ 255
   end
 end
 
