@@ -20,7 +20,14 @@ class Node
 end
 
 class LinkedList
+  include Enumerable
+  attr_reader :head, :tail
   def initialize
+    @head = Node.new
+    @tail = Node.new
+    @head.next = @tail
+    @tail.prev = @head
+
   end
 
   def [](i)
@@ -29,30 +36,79 @@ class LinkedList
   end
 
   def first
+    return @head.next
   end
 
   def last
+    return @tail.prev
   end
 
   def empty?
+    @head.next == @tail
   end
 
   def get(key)
+    if include?(key)
+      node = head
+      until node == tail.prev
+        node = node.next
+        return node.val if node.key == key
+      end
+    end
   end
 
   def include?(key)
+    node = head
+    until node == tail.prev
+      node = node.next
+      return true if node.key == key
+    end
+    false
   end
 
   def append(key, val)
+    if include?(key)
+      update(key, val)
+    else
+      node = Node.new(key, val)
+      node.prev = tail.prev
+      node.next = tail
+      tail.prev.next = node
+      tail.prev = node
+      
+    end
   end
 
   def update(key, val)
+    if include?(key)
+      node = head
+      until node == tail.prev
+        node = node.next
+        node.val = val if node.key == key
+      end
+    end
   end
 
   def remove(key)
+    if include?(key)
+      node = head
+      until node == tail.prev
+        node = node.next
+        if node.key == key
+          node.prev.next = node.next
+          node.next.prev = node.prev
+          
+        end
+      end
+    end
   end
 
   def each
+    node = head.next
+    until node == tail
+      yield node
+      node = node.next
+    end
   end
 
   # uncomment when you have `each` working and `Enumerable` included
