@@ -95,20 +95,6 @@ class LinkedList
     end
   end
 
-  # def remove(key)
-  #   # if include?(key)
-  #     node = head
-  #     until node == tail.prev
-  #       node = node.next
-  #       if node.key == key
-  #         node.prev.next = node.next
-  #         node.next.prev = node.prev
-          
-  #       end
-  #     end
-  #   # end
-  #   nil
-  # end
 
   def remove(key)
     each do |node|
