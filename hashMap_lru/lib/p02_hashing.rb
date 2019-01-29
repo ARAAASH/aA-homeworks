@@ -39,6 +39,23 @@ class Hash
   # This returns 0 because rspec will break if it returns nil
   # Make sure to implement an actual Hash#hash method
   def hash
-    0
+    sum = 0
+    self.each do |key, value|
+      key = key.to_s if !key.is_a?(String)
+      value = value.to_s if !value.is_a?(String)
+      sum += hsh_str(key + value)
+    end
+   
+    sum ^ 255
+    # 0
+  end
+
+  def hsh_str(str)
+    num = 0
+    str.each_char.with_index do |c, i|
+      num += c.ord * i
+    end
+   
+    num
   end
 end
