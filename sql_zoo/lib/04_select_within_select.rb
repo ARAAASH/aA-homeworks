@@ -35,6 +35,17 @@ end
 def larger_than_russia
   # List each country name where the population is larger than 'Russia'.
   execute(<<-SQL)
+    SELECT 
+      name 
+    FROM 
+      countries
+    WHERE
+      population > (
+        SELECT population
+        FROM countries
+        WHERE
+          name LIKE 'Russia'
+      )
   SQL
 end
 
@@ -42,6 +53,17 @@ def richer_than_england
   # Show the countries in Europe with a per capita GDP greater than
   # 'United Kingdom'.
   execute(<<-SQL)
+    SELECT 
+      name
+    FROM
+      countries
+    WHERE
+      continent = 'Europe' AND
+      gdp/population > (
+        select gdp/population
+        FROM countries
+        WHERE name = 'United Kingdom' 
+      )
   SQL
 end
 
@@ -49,6 +71,18 @@ def neighbors_of_certain_b_countries
   # List the name and continent of countries in the continents containing
   # 'Belize', 'Belgium'.
   execute(<<-SQL)
+    SELECT 
+      name, continent
+    FROM
+      countries
+    WHERE
+      continent IN (
+        SELECT continent
+        FROM countries
+        WHERE 
+          name LIKE 'Belize' OR
+          name LIKE 'Belgium'
+      )
   SQL
 end
 
@@ -56,6 +90,21 @@ def population_constraint
   # Which country has a population that is more than Canada but less than
   # Poland? Show the name and the population.
   execute(<<-SQL)
+    SELECT
+      name, population
+    FROM countries
+    WHERE 
+      population > (
+        SELECT population
+        FROM countries
+        WHERE name LIKE 'Canada'
+      )
+      AND
+      population < (
+        SELECT population
+        FROM countries
+        WHERE name LIKE 'Poland'
+      )
   SQL
 end
 
@@ -65,5 +114,15 @@ def sparse_continents
   # population.
   # Hint: Sometimes rewording the problem can help you see the solution.
   execute(<<-SQL)
+    SELECT 
+      name, continent, population
+    FROM countries
+    WHERE
+      continent NOT IN (
+        SELECT continent
+        FROM countries
+        WHERE population >= 25000000
+        
+      );
   SQL
 end
