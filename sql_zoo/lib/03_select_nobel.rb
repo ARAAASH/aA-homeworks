@@ -106,6 +106,6 @@ def nobel_johns
     FROM
       nobels
     WHERE
-      winner LIKE 'John%'
+      winner LIKE 'Theodore Roosevelt'
   SQL
 end
