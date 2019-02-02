@@ -1,3 +1,10 @@
+DROP TABLE IF EXISTS question_likes;
+DROP TABLE IF EXISTS question_follows;
+DROP TABLE IF EXISTS question_tags;
+DROP TABLE IF EXISTS replies;
+DROP TABLE IF EXISTS questions;
+DROP TABLE IF EXISTS tags;
+DROP TABLE IF EXISTS users;
 
 PRAGMA foreign_keys = ON;  -- turn on the foreign key constraints to ensure data integrity
 
@@ -30,9 +37,11 @@ CREATE TABLE replies (
   body TEXT,
   question_id INTEGER NOT NULL,
   author_id INTEGER NOT NULL,
+  parent_reply_id INTEGER,
 
   FOREIGN KEY (question_id) REFERENCES questions(id),
-  FOREIGN KEY (author_id) REFERENCES users(id)
+  FOREIGN KEY (author_id) REFERENCES users(id),
+  FOREIGN KEY (parent_reply_id) REFERENCES replies(id)
 );
 
 CREATE TABLE question_likes (
