@@ -1,4 +1,6 @@
 require_relative 'questions_database'
+require_relative 'question'
+require_relative 'reply'
 
 class User
 
@@ -18,7 +20,7 @@ class User
       WHERE 
         fname = ? AND lname = ?
     SQL
-    User.new(data.first)
+    data.map { |datum| User.new(datum) }
   end
 
   attr_accessor :id, :fname, :lname
@@ -27,5 +29,14 @@ class User
     @fname = options['fname']
     @lname = options['lname']
   end
+
+  def authored_questions
+    Question.find_by_author_id(id)
+  end
+
+  def authored_replies
+    Reply.find_by_user_id(id)
+  end
+  
 
 end
