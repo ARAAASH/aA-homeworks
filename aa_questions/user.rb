@@ -59,4 +59,28 @@ class User
     data.first['n']
   end
 
+  def save
+    if @id
+      update
+    else
+      data = QuestionsDatabase.instance.execute(<<-SQL, @fname, @lname)
+        INSERT INTO users(fname, lname)
+        VALUES (?, ?)
+      SQL
+      @id = QuestionsDatabase.instance.last_insert_row_id
+    end
+  end
+
+  def update
+    # raise "#{self} doesn't exist in db" unless @id
+    QuestionsDatabase.instance.execute(<<-SQL, @fname, @lname, @id)
+      UPDATE 
+        users
+      SET 
+        fname = ?, lname = ?
+      WHERE
+        id = ?
+    SQL
+  end
+
 end
