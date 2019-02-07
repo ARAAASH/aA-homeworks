@@ -12,12 +12,11 @@ class Course < ApplicationRecord
     source: :user
   )
 
-  has_one(
-    :prerequisite,
+  belongs_to :prerequisite,
     class_name: 'Course',
     foreign_key: :prereq_id,
-    primary_key: :id
-  )
+    primary_key: :id,
+    optional: true
 
   belongs_to(
     :instructor,
