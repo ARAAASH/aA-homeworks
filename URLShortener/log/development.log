@@ -623,3 +623,134 @@ Migrating to AddDefaultValueToPremiumInUsers (20190209030752)
   ↳ bin/rails:9
   [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[36mVisit Load (1.5ms)[0m  [1m[34mSELECT "visits".* FROM "visits"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jefferson@cats.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (41.6ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "email", "premium") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2019-02-09 03:45:53.948323"], ["updated_at", "2019-02-09 03:45:53.948323"], ["email", "jefferson@cats.com"], ["premium", true]]
+  [1m[35m (40.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "muenster@cats.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "email") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2019-02-09 03:45:54.071836"], ["updated_at", "2019-02-09 03:45:54.071836"], ["email", "muenster@cats.com"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mShortenedurl Exists (41.5ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "hXHI7EqeCMqhOXg5oWyVeA"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1 LIMIT $2[0m  [["user_id", 5], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "hXHI7EqeCMqhOXg5oWyVeA"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."long_url" = $1 LIMIT $2[0m  [["long_url", "www.boxes.com"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (12.7ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at >= '2019-02-09 03:46:25.771343') AND (user_id == 5)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mShortenedurl Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "fyGqFYFxJL_gzsHjL4WSUw"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1 LIMIT $2[0m  [["user_id", 5], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "fyGqFYFxJL_gzsHjL4WSUw"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."long_url" = $1 LIMIT $2[0m  [["long_url", "www.boxes.com"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (1.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at >= '2019-02-09 03:47:35.927972') AND (user_id == 5)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mShortenedurl Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "27qhGfyP5dbBAEZcdLclIg"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1 LIMIT $2[0m  [["user_id", 5], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "27qhGfyP5dbBAEZcdLclIg"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."long_url" = $1 LIMIT $2[0m  [["long_url", "www.boxes.com"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at >= '2019-02-09 03:49:16.737395') AND "shortenedurls"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mShortenedurl Create (0.5ms)[0m  [1m[32mINSERT INTO "shortenedurls" ("user_id", "short_url", "long_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 5], ["short_url", "27qhGfyP5dbBAEZcdLclIg"], ["long_url", "www.boxes.com"], ["created_at", "2019-02-09 03:50:16.763152"], ["updated_at", "2019-02-09 03:50:16.763152"]]
+  [1m[35m (41.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mShortenedurl Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "Ux_9A3FUAp4_BCDrjIeweA"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "Ux_9A3FUAp4_BCDrjIeweA"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."long_url" = $1 LIMIT $2[0m  [["long_url", "www.meowmix.com"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at >= '2019-02-09 03:50:08.670553') AND "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (1.6ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (user_id == 6)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "wn9v-C2YEukGBTqldXea7A"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "wn9v-C2YEukGBTqldXea7A"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."long_url" = $1 LIMIT $2[0m  [["long_url", "www.meowmix.com"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at >= '2019-02-09 03:51:20.614388') AND "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.3ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mShortenedurl Create (10.4ms)[0m  [1m[32mINSERT INTO "shortenedurls" ("user_id", "short_url", "long_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 6], ["short_url", "wn9v-C2YEukGBTqldXea7A"], ["long_url", "www.meowmix.com"], ["created_at", "2019-02-09 03:52:20.636764"], ["updated_at", "2019-02-09 03:52:20.636764"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "kJlIpo6d0tQlYeqko_s1CA"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedurl Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "kJlIpo6d0tQlYeqko_s1CA"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."long_url" = $1 LIMIT $2[0m  [["long_url", "www.smallrodents.com"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at >= '2019-02-09 03:52:02.666410') AND "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.3ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.3ms)[0m  [1m[34mSELECT  "shortenedurls".* FROM "shortenedurls" WHERE "shortenedurls"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mVisit Create (0.7ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortenedurl_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["shortenedurl_id", 4], ["created_at", "2019-02-09 03:56:48.958716"], ["updated_at", "2019-02-09 03:56:48.958716"]]
+  [1m[35m (40.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT  "shortenedurls".* FROM "shortenedurls" WHERE "shortenedurls"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mVisit Create (0.4ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortenedurl_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["shortenedurl_id", 5], ["created_at", "2019-02-09 03:57:13.441853"], ["updated_at", "2019-02-09 03:57:13.441853"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls"[0m
+  [1m[36mShortenedurl Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "KScS3FGwUtFZSFNmI6uFcQ"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "KScS3FGwUtFZSFNmI6uFcQ"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."long_url" = $1 LIMIT $2[0m  [["long_url", "www.smallrodents.com"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at >= '2019-02-09 03:59:47.179959') AND "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.3ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "QlEOYRvOxCAAJZA4uw4-WA"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedurl Exists (9.1ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "QlEOYRvOxCAAJZA4uw4-WA"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."long_url" = $1 LIMIT $2[0m  [["long_url", "www.smallrodents.com"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.7ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at >= '2019-02-09 03:59:55.998829') AND "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (1.1ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mShortenedurl Create (0.5ms)[0m  [1m[32mINSERT INTO "shortenedurls" ("user_id", "short_url", "long_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 6], ["short_url", "QlEOYRvOxCAAJZA4uw4-WA"], ["long_url", "www.smallrodents.com"], ["created_at", "2019-02-09 04:00:56.023590"], ["updated_at", "2019-02-09 04:00:56.023590"]]
+  [1m[35m (40.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls"[0m
+  [1m[36mVisit Load (40.9ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE (updated_at > 600)[0m
+  [1m[36mVisit Load (0.5ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE (updated_at > '2019-02-09 03:52:37.724473')[0m
+  [1m[36mShortenedurl Destroy (43.0ms)[0m  [1m[31mDELETE FROM "shortenedurls" WHERE "shortenedurls"."id" = $1[0m  [["id", 3]]
+  [1m[36mShortenedurl Destroy (8.4ms)[0m  [1m[31mDELETE FROM "shortenedurls" WHERE "shortenedurls"."id" = $1[0m  [["id", 4]]
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at > '2019-02-09 03:52:37.794697')[0m
+  [1m[36mVisit Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "visits" WHERE "visits"."shortenedurl_id" = $1 LIMIT $2[0m  [["shortenedurl_id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Destroy (40.7ms)[0m  [1m[31mDELETE FROM "shortenedurls" WHERE "shortenedurls"."id" = $1[0m  [["id", 6]]
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls"[0m
+  [1m[36mVisit Load (0.4ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE (updated_at > '2019-02-09 04:04:45.143442')[0m
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at > '2019-02-09 04:04:45.145313')[0m
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls"[0m
+  [1m[36mShortenedurl Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "eZW-9QI-80o7xO2mumtw4w"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "eZW-9QI-80o7xO2mumtw4w"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."long_url" = $1 LIMIT $2[0m  [["long_url", "www.meowmix.com"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at >= '2019-02-09 04:05:26.824117') AND "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.3ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE "shortenedurls"."user_id" = $1[0m  [["user_id", 6]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mShortenedurl Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "cKX02hYk0-Gpmt5A9cBIRQ"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."short_url" = $1 LIMIT $2[0m  [["short_url", "cKX02hYk0-Gpmt5A9cBIRQ"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "shortenedurls" WHERE "shortenedurls"."long_url" = $1 LIMIT $2[0m  [["long_url", "www.boxes.com"], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.5ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at >= '2019-02-09 04:06:35.190171') AND "shortenedurls"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mShortenedurl Create (0.4ms)[0m  [1m[32mINSERT INTO "shortenedurls" ("user_id", "short_url", "long_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 5], ["short_url", "cKX02hYk0-Gpmt5A9cBIRQ"], ["long_url", "www.boxes.com"], ["created_at", "2019-02-09 04:07:35.193724"], ["updated_at", "2019-02-09 04:07:35.193724"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.3ms)[0m  [1m[34mSELECT  "shortenedurls".* FROM "shortenedurls" WHERE "shortenedurls"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mVisit Create (0.4ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortenedurl_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["shortenedurl_id", 7], ["created_at", "2019-02-09 04:08:14.340019"], ["updated_at", "2019-02-09 04:08:14.340019"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT  "shortenedurls".* FROM "shortenedurls" WHERE "shortenedurls"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mVisit Create (0.4ms)[0m  [1m[32mINSERT INTO "visits" ("user_id", "shortenedurl_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 6], ["shortenedurl_id", 7], ["created_at", "2019-02-09 04:08:58.130541"], ["updated_at", "2019-02-09 04:08:58.130541"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls"[0m
+  [1m[36mVisit Load (0.5ms)[0m  [1m[34mSELECT "visits".* FROM "visits" WHERE (updated_at > '2019-02-09 04:09:14.188601')[0m
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls" WHERE (created_at > '2019-02-09 04:09:14.190424')[0m
+  [1m[36mShortenedurl Load (0.4ms)[0m  [1m[34mSELECT "shortenedurls".* FROM "shortenedurls"[0m

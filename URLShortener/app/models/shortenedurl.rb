@@ -1,6 +1,7 @@
 class Shortenedurl < ApplicationRecord
   require 'securerandom'
-  validates :user_id, :short_url, :long_url, uniqueness: true, presence: true
+  validates :short_url, :long_url, uniqueness: true, presence: true
+  validates :user_id, presence: true
   validate :no_spamming
   validate :nonpremium_max
 
@@ -59,15 +60,31 @@ class Shortenedurl < ApplicationRecord
   def num_recent_uniques
     visits
       .select('user_id')
-      .where('created_at < ?', 10.minutes.ago)
+      .where('created_at > ?', 10.minutes.ago)
       .distinct.count
+  end
+
+  def self.prune(n)
+    not_visited = Visit
+      .where('updated_at > ?', n.minutes.ago)
+
+    not_visited.each do |vis|
+      delete(vis.id)
+    end
+
+    old = Shortenedurl
+      .where('created_at > ?', n.minutes.ago)
+
+    old.each do |url|
+      delete(url.id) if url.visits.empty?
+    end
   end
 
   private
   def no_spamming
     max_num = Shortenedurl
       .where('created_at >= ?', 1.minute.ago)
-      .where('user_id == ?', self.user_id)
+      .where(user_id: user_id)
       .length
 
     errors[:max_num] << 'of five short urls per minute' if max_num >= 5
@@ -76,7 +93,7 @@ class Shortenedurl < ApplicationRecord
   def nonpremium_max
     if self.submitter.premium == false
       max = Shortenedurl
-        .where('user_id == ?', self.user_id)
+        .where(user_id: user_id)
         .length
 
       errors[:error] << ': non-premium cannot submit more than five' if max >= 5
