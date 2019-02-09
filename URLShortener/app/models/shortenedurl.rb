@@ -10,7 +10,7 @@ class Shortenedurl < ApplicationRecord
     short
   end
 
-  def self.factory(user, long_url)
+  def self.factory!(user, long_url)
     user_id = user.id
     short_url = self.random_code
     self.create!({:user_id => user_id, :short_url => short_url, :long_url => long_url})
