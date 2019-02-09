@@ -1,6 +1,8 @@
 class Shortenedurl < ApplicationRecord
   require 'securerandom'
   validates :user_id, :short_url, :long_url, uniqueness: true, presence: true
+  validate :no_spamming
+  validate :nonpremium_max
 
   def self.random_code
     while(1)
@@ -15,6 +17,8 @@ class Shortenedurl < ApplicationRecord
     short_url = self.random_code
     self.create!({:user_id => user_id, :short_url => short_url, :long_url => long_url})
   end
+
+
 
   belongs_to(
     :submitter,
@@ -39,8 +43,8 @@ class Shortenedurl < ApplicationRecord
     foreign_key: :shortenedurl_id,
     primary_key: :id
 
-  has_many :topics
-    thourgh: :taggings
+  has_many :topics,
+    through: :taggings,
     source: :tag_topic
 
   def num_clicks
@@ -57,6 +61,27 @@ class Shortenedurl < ApplicationRecord
       .select('user_id')
       .where('created_at < ?', 10.minutes.ago)
       .distinct.count
+  end
+
+  private
+  def no_spamming
+    max_num = Shortenedurl
+      .where('created_at >= ?', 1.minute.ago)
+      .where('user_id == ?', self.user_id)
+      .length
+
+    errors[:max_num] << 'of five short urls per minute' if max_num >= 5
+  end
+
+  def nonpremium_max
+    if self.submitter.premium == false
+      max = Shortenedurl
+        .where('user_id == ?', self.user_id)
+        .length
+
+      errors[:error] << ': non-premium cannot submit more than five' if max >= 5
+    end
+
   end
 
 end

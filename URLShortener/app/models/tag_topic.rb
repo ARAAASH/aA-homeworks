@@ -11,6 +11,10 @@ class TagTopic < ApplicationRecord
     source: :shortenedurl
 
   def popular_links
-    
+    urls.join(:visits)
+      .group(:short_url)
+      .order('COUNT(visits.id) DESC')
+      .select(urls.short_url, urls.long_url, COUNT(visits.id))
+      .limit(5)
   end
 end
