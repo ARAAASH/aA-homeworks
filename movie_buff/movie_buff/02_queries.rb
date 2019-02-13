@@ -50,7 +50,7 @@ def most_supportive
     .joins(:castings)
     .where('ord > ?', 1)
     .group('actors.id')
-    .order('roles DESC')
+    .order('roles DESC4')
     .limit(2)
 
 
