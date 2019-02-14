@@ -17,6 +17,18 @@ class Question < ApplicationRecord
     through: :answer_choices,
     source: :responses
 
+  def results
+    answers = self.answer_choices
+      .select('answer_choices.text, COUNT(responses.id) AS num_responses')
+      .left_outer_joins(:responses)
+      .group('answer_choices.id')
+      
+    answers.inject({}) do |results, ans|
+      results[ans.text] = ans.num_responses
+      results
+    end
+  end
+
   def results_n_plus_one
     answers = self.answer_choices
     results_hsh = {}
@@ -28,7 +40,7 @@ class Question < ApplicationRecord
     results_hsh
   end
 
-  def results
+  def results_v1
     answers = self.answer_choices.includes(:responses)
     results_hsh = {}
     answers.each do |answer|
