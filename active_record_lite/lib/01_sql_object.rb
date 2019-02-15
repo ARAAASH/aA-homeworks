@@ -87,7 +87,7 @@ class SQLObject
 
   def insert
     columns = self.class.columns.drop(1)
-    col_names = columns.map(&:to_sym).join(', ')
+    col_names = columns.join(', ')
     question_marks = (['?']*columns.count).join(', ')
 
     DBConnection.execute(<<-SQL, *attribute_values.drop(1))
@@ -102,10 +102,24 @@ class SQLObject
   end
 
   def update
-    # ...
+    id = attribute_values.first
+    set_line = self.class.columns.drop(1).map { |attr| "#{attr} = ?" }
+    set_line = set_line.join(', ')
+    DBConnection.execute(<<-SQL, *attribute_values.drop(1), id)
+      UPDATE
+        #{self.class.table_name}
+      SET
+        #{set_line}
+      WHERE
+        id = ?
+    SQL
   end
 
   def save
-    # ...
+    if self.id.nil?
+      self.insert
+    else
+      self.update
+    end
   end
 end
