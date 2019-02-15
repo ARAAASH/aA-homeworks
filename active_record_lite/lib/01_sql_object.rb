@@ -4,19 +4,35 @@ require 'active_support/inflector'
 # of this project. It was only a warm up.
 
 class SQLObject
+
   def self.columns
-    # ...
+    if @columns.nil?
+      rows = DBConnection.execute2(<<-SQL)
+        SELECT *
+        FROM "#{self.table_name}"
+      SQL
+      @columns = []
+      rows[0].each do |ele|
+        @columns << ele.to_sym
+      end
+    end
+    @columns
   end
 
   def self.finalize!
   end
 
   def self.table_name=(table_name)
-    # ...
+    @everythingisanobject ||= table_name
+
   end
 
   def self.table_name
-    # ...
+
+    if @everythingisanobject.nil?
+      @everythingisanobject = self.name.tableize
+    end
+    @everythingisanobject
   end
 
   def self.all
