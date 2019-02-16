@@ -6,7 +6,14 @@ module Associatable
 
   def has_one_through(name, through_name, source_name)
     define_method(name) do
+      # self is the instance of the class that wants to
+      # use has_one_through
+
+      # through_options are inside self, because always the through
+      # association is defined in self class before has_one_through
       through_options = self.class.assoc_options[through_name]
+
+      # class-name in through association is always the source class
       source_options = through_options.model_class.assoc_options[source_name]
 
       through_table = through_options.table_name
