@@ -20,14 +20,14 @@ end
 
 class BelongsToOptions < AssocOptions
   def initialize(name, options = {})
-    if options.empty?
-      @foreign_key = (name.to_s.camelcase + 'Id').underscore.to_sym
-      @primary_key = :id
-      @class_name = name.to_s.camelcase
-    else
-      @foreign_key = options[:foreign_key] unless options[:foreign_key].nil?
-      @class_name = options[:class_name] unless options[:class_name].nil?
-      @primary_key = options[:primary_key] unless options[:primary_key].nil?
+    defaults = {
+      primary_key: :id,
+      foreign_key: "#{name}_id".to_sym,
+      class_name: name.to_s.camelcase
+    }
+
+    defaults.keys.each do |k|
+      self.send("#{k}=", options[k] || defaults[k])
     end
 
   end
@@ -35,26 +35,35 @@ end
 
 class HasManyOptions < AssocOptions
   def initialize(name, self_class_name, options = {})
-    if options.empty?
-      @primary_key = :id
-      @foreign_key = (self_class_name + 'Id').underscore.to_sym
-      @class_name = name.singularize.camelcase
-    else
-      @primary_key = options[:primary_key] unless options[:primary_key].nil?
-      @foreign_key = options[:foreign_key] unless options[:foreign_key].nil?
-      @class_name = options[:class_name] unless options[:class_name].nil?
+    defaults = {
+      primary_key: :id,
+      foreign_key: "#{self_class_name}Id".underscore.to_sym,
+      class_name: name.to_s.singularize.camelcase
+    }
+
+    defaults.keys.each do |k|
+      self.send("#{k}=", options[k] || defaults[k])
     end
+
   end
 end
 
 module Associatable
   # Phase IIIb
   def belongs_to(name, options = {})
-    # ...
+    options = BelongsToOptions.new(name, options)
+    define_method(name) do
+      foreign_key_val = self.send(options.foreign_key)
+      options.model_class.where({options.primary_key => foreign_key_val}).first
+    end
   end
 
   def has_many(name, options = {})
-    # ...
+    options = HasManyOptions.new(name, self.name, options)
+    define_method(name) do
+      primary_key_val = self.send(options.primary_key)
+      options.model_class.where(options.foreign_key => primary_key_val)
+    end
   end
 
   def assoc_options
@@ -63,5 +72,5 @@ module Associatable
 end
 
 class SQLObject
-  # Mixin Associatable here...
+  extend Associatable
 end
