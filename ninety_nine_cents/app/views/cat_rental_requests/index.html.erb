@@ -1,0 +1,11 @@
+<h1>Rental Requests!</h1>
+
+<% @cat_request.each do |req| %>
+
+  <li> <%= req.cat.name %>
+    <li> starting date: <%= req.start_date %></li>
+    <li> ending date: <%= req.end_date %>  </li>
+    <li>status: <%= req.status %> </li>
+    <br>
+  </li>
+<% end %>

@@ -1,0 +1,16 @@
+<h1>Show rental info for <%= @cat_request.cat.name %></h1>
+
+<li>start_date: <%= @cat_request.start_date %></li>
+<li>Ending date: <%= @cat_request.end_date %></li>
+<li>status: <%= @cat_request.status %></li>
+<br>
+<a href= "<%= cat_url(@cat_request.cat_id) %>"> Go to <%= @cat_request.cat.name %> page</a>
+<br>
+<% if @cat_request.pending? %>
+  <form action="<%=deny_cat_rental_request_url(@cat_request) %>" method="GET">
+      <input type="submit" value="DENY">
+  </form>
+  <form action="<%=approve_cat_rental_request_url(@cat_request) %>" method="get">
+    <input type="submit" value="APPROVE">
+  </form>
+<% end %>
