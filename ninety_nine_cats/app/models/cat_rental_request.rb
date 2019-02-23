@@ -1,64 +1,154 @@
 class CatRentalRequest < ApplicationRecord
-  validates :cat_id, presence: true
-  validates :start_date, presence: true
-  validates :end_date, presence: true
-  validates :status, presence: true, inclusion: { in: %w(APPROVED DENIED PENDING) }
+  # .freeze renders constants immutable
+  STATUS_STATES = %w(APPROVED DENIED PENDING).freeze
+
+  validates :cat_id, :end_date, :start_date, :status, presence: true
+  validates :status, inclusion: STATUS_STATES
+  validate :start_must_come_before_end
   validate :does_not_overlap_approved_request
-  validate :start_must_come_from_before_end
 
-  belongs_to :cat,
-    class_name: :Cat,
-    primary_key: :id,
-    foreign_key: :cat_id
+  belongs_to :cat
 
-  def pending?
-    self.status == "PENDING"
-  end
-
-  def deny!
-    self.status = "DENIED"
-    self.save
-  end
+  after_initialize :assign_pending_status
 
   def approve!
-    self.transaction do
-      self.status = "APPROVED"
-      self.save
+    raise 'not pending' unless self.status == 'PENDING'
+    transaction do
+      self.status = 'APPROVED'
+      self.save!
+
+      # when we approve this request, we reject all other overlapping
+      # requests for this cat.
       overlapping_pending_requests.each do |req|
-        req.update!(status: "DENIED")
+        req.update!(status: 'DENIED')
       end
     end
   end
 
+  def approved?
+    self.status == 'APPROVED'
+  end
+
+  def denied?
+    self.status == 'DENIED'
+  end
+
+  def deny!
+    self.status = 'DENIED'
+    self.save!
+  end
+
+  def pending?
+    self.status == 'PENDING'
+  end
+
   private
-  def overlapping_pending_requests
-    overlapping_requests.where("status= \'PENDING\'")
-  end
 
-  def does_not_overlap_approved_request
-    return if self.status == "DENIED"
-
-    unless overlapping_approved_requests.empty?
-      errors[:base] << "There is an overlapping approved request for this cat!"
-    end
-  end
-
-  def overlapping_approved_requests
-    overlapping_requests.where("status= \'APPROVED\'")
+  def assign_pending_status
+    self.status ||= 'PENDING'
   end
 
   def overlapping_requests
-    CatRentalRequest.where(cat_id: self.cat_id)
+    # ======================================
+    #
+    # Ranges can overlap in several ways:
+    #
+    #   |-----|       |-----|     |---|
+    #       |-----|   |-----|   |-------|
+    #     (2x)                    (2x)
+    #
+    # ======================================
+    #
+    # However, it is easier to think of the
+    # two cases where they do not overlap:
+    #
+    #    [Case 1]
+    #
+    #        A              B
+    #    |-------|      |-------|
+    #    A(s)    A(e)   B(s)    B(e)
+    #
+    # The start point of B comes after the
+    # end point of A. Thus: B(s) > A(e)
+    #
+    #
+    #    [Case 2]
+    #
+    #        B              A
+    #    |-------|      |-------|
+    #    B(s)    B(e)   A(s)    A(e)
+    #
+    # The start point of A comes after the
+    # end point of B. Thus: A(s) > B(e)
+    #
+    # ======================================
+    #
+    # Taking those two cases, we can say
+    # there's no overlap when:
+    #
+    #   B(s) > A(e) || A(s) > B(e)
+    #
+    # ======================================
+    #
+    # We can negate this to get all cases
+    # where there must be overlap:
+    #
+    #   !( B(s) > A(e) || A(s) > B(e) )
+    #
+    # Personally, I find this most clear.
+    #
+    # In order for overlap to occur, the
+    # other range cannot be entirely before
+    # it or entirely after it.
+    #
+    # ======================================
+    #
+    # You could distribute the negation:
+    #
+    #   !( B(s) > A(e) ) && !( A(s) > B(e) )
+    #
+    # And take it even further, making it
+    # shorter, but perhaps less intuitive:
+    #
+    #   B(s) <= A(e) && A(s) <= B(e)
+    #
+    # ======================================
+
+    # We want:
+    # 1. A different request
+    # 2. That is for the same cat.
+    # 3. That overlaps.
+
+    CatRentalRequest
       .where.not(id: self.id)
-      .where.not("start_date > :end_date OR end_date < :start_date",
-                start_date: self.start_date, end_date: self.end_date)
-
+      .where(cat_id: cat_id)
+      .where.not('start_date > :end_date OR end_date < :start_date',
+                 start_date: start_date, end_date: end_date)
   end
 
-  def start_must_come_from_before_end
-    return if self.start_date < self.end_date
-    errors[:start_date] << "must come before end date"
-    errors[:end_date] << "must come after start date "
+  def overlapping_approved_requests
+    overlapping_requests.where('status = \'APPROVED\'')
   end
 
+  def overlapping_pending_requests
+    overlapping_requests.where('status = \'PENDING\'')
+  end
+
+  def does_not_overlap_approved_request
+    # A denied request doesn't need to be checked. A pending request
+    # should be checked; users shouldn't be able to make requests for
+    # periods during which a cat has already been spoken for.
+    return if self.denied?
+
+    unless overlapping_approved_requests.empty?
+      errors[:base] <<
+        'Request conflicts with existing approved request'
+    end
+  end
+
+  def start_must_come_before_end
+    return if start_date < end_date
+    errors[:start_date] << 'must come before end date'
+    errors[:end_date] << 'must come after start date'
+  end
 end

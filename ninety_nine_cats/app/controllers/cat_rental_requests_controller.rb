@@ -1,51 +1,40 @@
 class CatRentalRequestsController < ApplicationController
-
-  def index
-
-    @cat_request = CatRentalRequest.all
-    # fail
-    render :index
-  end
-
-  def show
-    @cat_request = CatRentalRequest.find_by(id: params[:id])
-    if @cat_request
-      render :show
-    else
-      redirect_to cat_rental_requests_url
-    end
-  end
-
   def approve
-    @cat_request = CatRentalRequest.find_by(id: params[:id])
-    @cat_request.approve!
-    redirect_to cat_rental_requests_url
-  end
-
-  def deny
-    @cat_request = CatRentalRequest.find_by(id: params[:id])
-    @cat_request.deny!
-    redirect_to cat_rental_requests_url
-  end
-
-  def new
-    @cat_request = CatRentalRequest.new
-    render :new
+    current_cat_rental_request.approve!
+    redirect_to cat_url(current_cat)
   end
 
   def create
-    # render json: "ok"
-    @cat_request = CatRentalRequest.new(cat_rental_request_params)
-    # fail
-    if @cat_request.save
-      render json: "ok"
+    @rental_request = CatRentalRequest.new(cat_rental_request_params)
+    if @rental_request.save
+      redirect_to cat_url(@rental_request.cat)
     else
-      render json: "not ok"
+      flash.now[:errors] = @rental_request.errors.full_messages
+      render :new
     end
   end
 
+  def deny
+    current_cat_rental_request.deny!
+    redirect_to cat_url(current_cat)
+  end
+
+  def new
+    @rental_request = CatRentalRequest.new
+  end
+
   private
+
+  def current_cat_rental_request
+    @rental_request ||=
+      CatRentalRequest.includes(:cat).find(params[:id])
+  end
+
+  def current_cat
+    current_cat_rental_request.cat
+  end
+
   def cat_rental_request_params
-    params.require("cat_rental_request").permit(:cat_id, :start_date, :end_date)
+    params.require(:cat_rental_request).permit(:cat_id, :end_date, :start_date, :status)
   end
 end

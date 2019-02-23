@@ -1,17 +1,12 @@
 class CatsController < ApplicationController
-
   def index
     @cats = Cat.all
     render :index
   end
 
   def show
-    @cat = Cat.find_by(id: params[:id])
-    if @cat
-      render :show
-    else
-      redirect_to cats_url
-    end
+    @cat = Cat.find(params[:id])
+    render :show
   end
 
   def new
@@ -20,43 +15,33 @@ class CatsController < ApplicationController
   end
 
   def create
-
     @cat = Cat.new(cat_params)
     if @cat.save
       redirect_to cat_url(@cat)
     else
-      redirect_to new_cat_url
+      flash.now[:errors] = @cat.errors.full_messages
+      render :new
     end
   end
 
   def edit
-    @cat = Cat.find_by(id: params[:id])
-
+    @cat = Cat.find(params[:id])
     render :edit
   end
 
   def update
-
-    @cat = Cat.find_by(id: params[:id])
-    # fail
+    @cat = Cat.find(params[:id])
     if @cat.update_attributes(cat_params)
       redirect_to cat_url(@cat)
     else
+      flash.now[:errors] = @cat.errors.full_messages
       render :edit
     end
-
   end
-
-  # def destroy
-  #   @cat = Cat.find_by(id: params[:id])
-  #
-  #   @cat.destroy
-  #   redirect_to cat_url(@cat)
-  # end
 
   private
-  def cat_params
-    params.require('cat').permit(:name, :sex, :color, :birth_date, :description)
-  end
 
+  def cat_params
+    params.require(:cat).permit(:age, :birth_date, :color, :description, :name, :sex)
+  end
 end

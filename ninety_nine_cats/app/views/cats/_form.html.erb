@@ -1,48 +1,58 @@
-<h1><%=cat.name  %> form!</h1>
+<% action = (cat.persisted? ? cat_url(cat) : cats_url) %>
+<% method = (cat.persisted? ? :patch : :post) %>
 
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
 
-<form action= "<%= cat.persisted? ? cat_url(cat) : cats_url %>" method="post">
-  <%# <% if cat.persisted? %> %>
-    <input type="hidden" name="_method" value="<%= cat.persisted? ? "PATCH" : "POST" %>">
-  <%# <% end %> %>
+  <label for="cat_name">Name</label>
+  <input
+    type="text"
+    name="cat[name]"
+    id="cat_name"
+    value="<%= cat.name %>">
 
-
-
-  <label for="name">Name</label>
-  <input id="name" type="text" name="cat[name]" value= "<%= cat.name %>">
+  <label for="cat_birth_date">Birth date</label>
+  <input
+    type="date"
+    name="cat[birth_date]"
+    id="cat_birth_date"
+    value="<%= cat.birth_date %>">
   <br>
 
-  <p>sex?</p>
-    <div>
-      <input type="radio" id='M' name="cat[sex]"
-        <%= cat.sex == "M"? "checked" : "" %> value= "M">
-      <label for="M">Male</label>
-    </div>
-
-    <div>
-      <input type="radio" id='F' name="cat[sex]"
-        <%= cat.sex == "F"? "checked" : "" %> value="F">
-      <label for="F">Female</label>
-    </div>
-  <br>
-
-  <label for="color">Choose a color</label>
-  <select id='color' name="cat[color]">
-    <option disabled>--select a color--</option>
-    <option value="gray" <%= cat.color == "gray"? "selected" : "" %>>gray</option>
-    <option value="white" <%= cat.color == "white"? "selected" : "" %>>white</option>
-    <option value="black" <%= cat.color == "black"? "selected" : "" %>>black</option>
+  <label for="cat_color">Color</label>
+  <select name="cat[color]" id="cat_color">
+  <option disabled selected>-- select a color --</option>
+    <% Cat::CAT_COLORS.each do |color| %>
+      <option
+        <%= cat.color == color ? "selected" : "" %>
+        value="<%= color %>">
+        <%= color.upcase %>
+      </option>
+    <% end %>
   </select>
   <br>
 
-  <label for="birth_date">Pick a birth date</label>
-  <input type="date" name="cat[birth_date]" value= "<%= cat.birth_date%>">
-
-  <p>Description</p>
-  <textarea name="cat[description]">
-    <%= cat.description %>
-  </textarea>
+  <input
+    type="radio"
+    name="cat[sex]"
+    value="M"
+    id="cat_sex_male"
+    <%= cat.sex == "M" ? "checked" : "" %>>
+  <label for="cat_sex_male">Male</label>
+  <input
+    type="radio"
+    name="cat[sex]"
+    value="F"
+    id="cat_sex_female"
+    <%= cat.sex == "F" ? "checked" : "" %>>
+  <label for="cat_sex_female">Female</label>
   <br>
 
-  <input type="submit" value="<%= cat.persisted? ? "Update" : "Add"%>">
+  <label>
+    Description
+    <textarea name="cat[description]"><%= cat.description %></textarea>
+  </label>
+
+  <% submit_text = (cat.persisted? ? 'Update' : 'Create') + ' cat!' %>
+  <input type="submit" value="<%= submit_text %>">
 </form>

@@ -1,21 +1,23 @@
-require 'date'
+require 'action_view'
 
 class Cat < ApplicationRecord
-  COLORS = %w(gray black white)
+  include ActionView::Helpers::DateHelper
 
-  validates :birth_date, presence: true
-  validates :color, inclusion: { in: COLORS }
-  validates :name, presence: true
-  validates :sex, presence: true, inclusion: { in: %w(F M) }
-  validates :description, presence: true
+  # .freeze renders a constant immutable.
+  CAT_COLORS = %w(black white orange brown).freeze
 
+  validates :color, inclusion: CAT_COLORS
+  validates :sex, inclusion: %w(M F)
+  validates :birth_date, :color, :name, :sex, presence: true
+
+  # Remember, has_many is just a method where the first argument is
+  # the name of the association, and the second argument is an options
+  # hash.
   has_many :rental_requests,
     class_name: :CatRentalRequest,
-    primary_key: :id,
-    foreign_key: :cat_id,
     dependent: :destroy
 
   def age
-    Date.now.year - self.birth_date.year
+    time_ago_in_words(birth_date)
   end
 end
