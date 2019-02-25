@@ -1,4 +1,10 @@
 class CatsController < ApplicationController
+  before_action :set_owner, only: [:create, :edit, :update]
+
+  def set_owner
+
+  end
+
   def index
     @cats = Cat.all
     render :index

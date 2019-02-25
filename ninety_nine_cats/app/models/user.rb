@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_many :cats,
+    class_name: :Cat,
+    dependent: :destroy
+
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end
@@ -33,9 +37,9 @@ class User < ApplicationRecord
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
-  private
+  # private
   def ensure_session_token
-    session_token ||= self.class.generate_session_token
+    self.session_token ||= self.class.generate_session_token
   end
 
 end
