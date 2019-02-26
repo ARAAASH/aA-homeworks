@@ -651,3 +651,877 @@ NoMethodError - undefined method `cat_id' for #<Cat:0x00007f9710e6b6b8>:
   app/controllers/cats_controller.rb:21:in `create'
 
 Started POST "/__better_errors/b749efd601b781ed/variables" for 127.0.0.1 at 2019-02-25 12:49:38 -0800
+Started GET "/cats/new" for 127.0.0.1 at 2019-02-25 12:58:36 -0800
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (1.0ms)
+  Rendered cats/_form.html.erb (4.9ms)
+  Rendered cats/new.html.erb within layouts/application (60.5ms)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 191ms (Views: 124.9ms | ActiveRecord: 38.2ms)
+
+
+Started POST "/cats" for 127.0.0.1 at 2019-02-25 12:58:55 -0800
+Processing by CatsController#create as HTML
+  Parameters: {"authenticity_token"=>"+4lI+TkteStIwEAZysMp+LqMGEuB/kbl6DD2NGxu6IkQ/0PFUpIp7UuIJ/GtJ0oWinIEyw0aJYJC3IaVrdhgPw==", "cat"=>{"name"=>"Googoosh", "birth_date"=>"2019-02-05", "color"=>"brown", "sex"=>"F", "description"=>"pretty girl!"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:26
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:26
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.3ms)
+
+
+
+NoMethodError - undefined method `cat_id' for #<Cat:0x00007f970c40d418>:
+  app/controllers/cats_controller.rb:26:in `create'
+
+Started POST "/__better_errors/c295cb33d9605e38/variables" for 127.0.0.1 at 2019-02-25 12:58:55 -0800
+Started POST "/__better_errors/c295cb33d9605e38/eval" for 127.0.0.1 at 2019-02-25 13:00:00 -0800
+Started GET "/cats/new" for 127.0.0.1 at 2019-02-25 13:00:38 -0800
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (8.2ms)
+  Rendered cats/_form.html.erb (1.0ms)
+  Rendered cats/new.html.erb within layouts/application (14.6ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 204ms (Views: 179.7ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/cats/new" for 127.0.0.1 at 2019-02-25 13:00:39 -0800
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.6ms)
+  Rendered cats/_form.html.erb (0.8ms)
+  Rendered cats/new.html.erb within layouts/application (6.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 50ms (Views: 49.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/cats" for 127.0.0.1 at 2019-02-25 13:00:56 -0800
+Processing by CatsController#create as HTML
+  Parameters: {"authenticity_token"=>"GNqtW54iPrzZgoEeoKhAm1/WFIUvvpKzwbbTH/TbE7bzrKZn9Z1uetrK5vbHTCN1bygIBaNa8dRrWqO+NW2bAA==", "cat"=>{"name"=>"Googoosh", "birth_date"=>"2019-02-05", "color"=>"orange", "sex"=>"F", "description"=>"good and pretty!"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:26
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:26
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 1.0ms)
+
+
+
+NoMethodError - undefined method `cat_id' for #<Cat:0x00007fe5fa78eff0>:
+  app/controllers/cats_controller.rb:26:in `create'
+
+Started POST "/__better_errors/409de7af1942437b/variables" for 127.0.0.1 at 2019-02-25 13:00:56 -0800
+  [1m[36mCat Load (0.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+Started POST "/__better_errors/409de7af1942437b/eval" for 127.0.0.1 at 2019-02-25 13:02:33 -0800
+Started GET "/cats/new" for 127.0.0.1 at 2019-02-25 13:02:39 -0800
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (8.1ms)
+  Rendered cats/_form.html.erb (0.9ms)
+  Rendered cats/new.html.erb within layouts/application (13.8ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 250ms (Views: 202.4ms | ActiveRecord: 34.9ms)
+
+
+Started GET "/cats/new" for 127.0.0.1 at 2019-02-25 13:02:40 -0800
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.7ms)
+  Rendered cats/_form.html.erb (0.8ms)
+  Rendered cats/new.html.erb within layouts/application (7.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 34ms (Views: 32.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/cats" for 127.0.0.1 at 2019-02-25 13:02:52 -0800
+Processing by CatsController#create as HTML
+  Parameters: {"authenticity_token"=>"Gmr9VQthCwAwzJFBlxrxn9CzbmSyZel49Kg7ctH/x37xHPZpYN5bxjOE9qnw/pJx4E1y5D6Bih9eREvTEElPyA==", "cat"=>{"name"=>"Googoosh", "birth_date"=>"2019-01-29", "color"=>"white", "sex"=>"F", "description"=>"hildsjflsk!"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:26
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:26
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.5ms)
+
+
+
+NoMethodError - undefined method `cat_id' for #<Cat:0x00007fcbc9409240>:
+  app/controllers/cats_controller.rb:26:in `create'
+
+Started POST "/__better_errors/b23317b3f5787a9a/variables" for 127.0.0.1 at 2019-02-25 13:02:52 -0800
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+Started POST "/__better_errors/b23317b3f5787a9a/eval" for 127.0.0.1 at 2019-02-25 13:06:53 -0800
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/cats/new" for 127.0.0.1 at 2019-02-25 13:09:10 -0800
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (8.6ms)
+  Rendered cats/_form.html.erb (1.3ms)
+  Rendered cats/new.html.erb within layouts/application (16.5ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 333ms (Views: 295.9ms | ActiveRecord: 23.4ms)
+
+
+Started POST "/cats" for 127.0.0.1 at 2019-02-25 13:09:16 -0800
+Processing by CatsController#create as HTML
+  Parameters: {"authenticity_token"=>"Gmr9VQthCwAwzJFBlxrxn9CzbmSyZel49Kg7ctH/x37xHPZpYN5bxjOE9qnw/pJx4E1y5D6Bih9eREvTEElPyA==", "cat"=>{"name"=>"Googoosh", "birth_date"=>"2019-01-29", "color"=>"white", "sex"=>"F", "description"=>"hildsjflsk!"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:26
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:26
+Completed 422 Unprocessable Entity in 21ms (ActiveRecord: 1.8ms)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Owner can't be blank, Owner must exist:
+  app/controllers/cats_controller.rb:26:in `create'
+
+Started POST "/__better_errors/fd825531e1397621/variables" for 127.0.0.1 at 2019-02-25 13:09:16 -0800
+Started GET "/cats/new" for 127.0.0.1 at 2019-02-25 13:10:06 -0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (14.1ms)
+  Rendered cats/_form.html.erb (1.7ms)
+  Rendered cats/new.html.erb within layouts/application (36.4ms)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 282ms (Views: 253.1ms | ActiveRecord: 12.4ms)
+
+
+Started POST "/cats" for 127.0.0.1 at 2019-02-25 13:10:15 -0800
+Processing by CatsController#create as HTML
+  Parameters: {"authenticity_token"=>"tgtNYAtDAgq/p6Kp0k2/+kMcu4TPOP4f5pjGM84VOJRdfUZcYPxSzLzvxUG1qdwUc+KnBEPcnXhMdLaSD6OwIg==", "cat"=>{"name"=>"Googoosh", "birth_date"=>"2019-01-29", "color"=>"black", "sex"=>"F", "description"=>"kljfdslkfj.m"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:26
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/cats_controller.rb:26
+Completed 422 Unprocessable Entity in 13ms (ActiveRecord: 1.0ms)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: Owner must exist:
+  app/controllers/cats_controller.rb:26:in `create'
+
+Started POST "/__better_errors/9ba90003dd5b7caa/variables" for 127.0.0.1 at 2019-02-25 13:10:16 -0800
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/__better_errors/9ba90003dd5b7caa/eval" for 127.0.0.1 at 2019-02-25 13:11:18 -0800
+Started POST "/__better_errors/9ba90003dd5b7caa/eval" for 127.0.0.1 at 2019-02-25 13:11:23 -0800
+Started GET "/cats/new" for 127.0.0.1 at 2019-02-25 13:13:05 -0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#new as HTML
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 4.1ms)
+
+
+
+NameError - undefined local variable or method `id' for #<Class:0x00007f9b824ec468>
+Did you mean?  ids:
+  app/models/cat.rb:23:in `<class:Cat>'
+  app/models/cat.rb:3:in `<main>'
+  app/controllers/cats_controller.rb:19:in `new'
+
+Started POST "/__better_errors/83a449019f2ca8b7/variables" for 127.0.0.1 at 2019-02-25 13:13:05 -0800
+Started GET "/cats" for 127.0.0.1 at 2019-02-25 13:13:29 -0800
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (21.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (30.4ms)
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 456ms (Views: 400.2ms | ActiveRecord: 45.8ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2019-02-25 13:13:31 -0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8ogAwJaFswaKKJ2C/ZLTxY1axoSdj8nXJnP+MyF3t6QZ/gv8/TrjwIlg+mqadrArvaTaBBFrqrCMn46S4ME/Eg=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "LRVPuQufihBG1HHzrgg7pA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:27
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "arash12"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "OtTAl9vYP5dsHMCcd2nY7g"], ["updated_at", "2019-02-25 21:13:31.125669"], ["id", 6]]
+  ↳ app/models/user.rb:27
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:27
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 10ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2019-02-25 13:13:31 -0800
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 25ms (Views: 24.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2019-02-25 13:13:36 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"RUOnCp5/LvQXgPClgqr9SKOstFXnZ3cw1wJdVfEpDNeuNaw29cB+MhTIl03lTp6mk1Ko1WuDFFd97i30MJ+EYQ==", "user"=>{"username"=>"arash12", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "arash12"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 70ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2019-02-25 13:13:36 -0800
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (1.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtTAl9vYP5dsHMCcd2nY7g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 56ms (Views: 54.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/cats/new" for 127.0.0.1 at 2019-02-25 13:13:37 -0800
+Processing by CatsController#new as HTML
+  Rendering cats/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (1.0ms)
+  Rendered cats/_form.html.erb (0.8ms)
+  Rendered cats/new.html.erb within layouts/application (7.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtTAl9vYP5dsHMCcd2nY7g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 84ms (Views: 72.2ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/cats" for 127.0.0.1 at 2019-02-25 13:13:45 -0800
+Processing by CatsController#create as HTML
+  Parameters: {"authenticity_token"=>"pFmbPp/cnbt8VhCzadP6z8+CKZMdJbGA8g1x3n/72hxPL5AC9GPNfX8ed1sON5kh/3w1E5HB0udY4QF/vk1Sqg==", "cat"=>{"name"=>"Googoosh", "birth_date"=>"2019-01-29", "color"=>"black", "sex"=>"F", "description"=>"dsdfdf"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtTAl9vYP5dsHMCcd2nY7g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:26
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:26
+  [1m[36mCat Create (45.7ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["birth_date", "2019-01-29"], ["color", "black"], ["name", "Googoosh"], ["sex", "F"], ["description", "dsdfdf"], ["created_at", "2019-02-25 21:13:45.860185"], ["updated_at", "2019-02-25 21:13:45.860185"], ["user_id", 6]]
+  ↳ app/controllers/cats_controller.rb:26
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:26
+Redirected to http://localhost:3000/cats/1
+Completed 302 Found in 67ms (ActiveRecord: 47.4ms)
+
+
+Started GET "/cats/1" for 127.0.0.1 at 2019-02-25 13:13:45 -0800
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (1.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:14
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (2.3ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:25
+  Rendered cats/show.html.erb within layouts/application (47.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtTAl9vYP5dsHMCcd2nY7g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 104ms (Views: 68.2ms | ActiveRecord: 23.3ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2019-02-25 13:14:06 -0800
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (2.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtTAl9vYP5dsHMCcd2nY7g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 35ms (Views: 33.8ms | ActiveRecord: 1.1ms)
+
+
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE "cats"."user_id" = $1[0m  [["user_id", 3]]
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE "cats"."user_id" = $1[0m  [["user_id", 6]]
+Started DELETE "/session" for 127.0.0.1 at 2019-02-25 14:38:30 -0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"qff7GWOZzOqzk76lDyvlBJGcslWztqdv9K7qMDBF7h9CgfAlCCacLLDb2U1oz4bqoWKu1T9SxAheQpqR8fNmqQ=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "OtTAl9vYP5dsHMCcd2nY7g"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:27
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "arash12"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "prNYs8LfJufslFSObn4ocA"], ["updated_at", "2019-02-25 22:38:30.947590"], ["id", 6]]
+  ↳ app/models/user.rb:27
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:27
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 37ms (ActiveRecord: 10.7ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2019-02-25 14:38:30 -0800
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 177ms (Views: 176.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2019-02-25 14:38:35 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"YjRGl9T+rnmGZ4EI2TVObPH5b10sk4LAC8zqgesO9O2JQk2rv0H+v4Uv5uC+0S2CwQdz3aB34aehIJogKrh8Ww==", "user"=>{"username"=>"arash12", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "arash12"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:20
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 71ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/cats" for 127.0.0.1 at 2019-02-25 14:38:35 -0800
+Processing by CatsController#index as HTML
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (13.2ms)
+  [1m[36mUser Load (14.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "prNYs8LfJufslFSObn4ocA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 72ms (Views: 49.3ms | ActiveRecord: 19.5ms)
+
+
+Started GET "/cats/1" for 127.0.0.1 at 2019-02-25 14:38:45 -0800
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (1.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:17
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (1.4ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:25
+  Rendered cats/show.html.erb within layouts/application (15.5ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "prNYs8LfJufslFSObn4ocA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 41ms (Views: 33.4ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/cats/1/edit" for 127.0.0.1 at 2019-02-25 14:38:47 -0800
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 104ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `already_owner_cat' for #<CatsController:0x00007fcd32507718>
+Did you mean?  already_owner_cat!:
+
+Started POST "/__better_errors/654b17f8ac4dd22b/variables" for 127.0.0.1 at 2019-02-25 14:38:48 -0800
+Started GET "/cats/1/edit" for 127.0.0.1 at 2019-02-25 14:39:17 -0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "prNYs8LfJufslFSObn4ocA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:38
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (0.4ms)
+  Rendered cats/_form.html.erb (2.1ms)
+  Rendered cats/edit.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 314ms (Views: 217.9ms | ActiveRecord: 41.9ms)
+
+
+Started PATCH "/cats/1" for 127.0.0.1 at 2019-02-25 14:39:25 -0800
+Processing by CatsController#update as HTML
+  Parameters: {"authenticity_token"=>"w3SVq1UyyGdB7SWpf94WIgBAs1wJw4f+VavCipZy2lwoAp6XPo2YoUKlQkEYOnXMML6v3IUn5Jn/R7IrV8RS6g==", "cat"=>{"name"=>"Googoosh", "birth_date"=>"2019-01-29", "color"=>"white", "sex"=>"F", "description"=>"dsdfdf"}, "id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "prNYs8LfJufslFSObn4ocA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:43
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:44
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:44
+  [1m[36mCat Update (0.5ms)[0m  [1m[33mUPDATE "cats" SET "color" = $1, "updated_at" = $2 WHERE "cats"."id" = $3[0m  [["color", "white"], ["updated_at", "2019-02-25 22:39:25.148262"], ["id", 1]]
+  ↳ app/controllers/cats_controller.rb:44
+  [1m[35m (39.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:44
+Redirected to http://localhost:3000/cats/1
+Completed 302 Found in 56ms (ActiveRecord: 41.9ms)
+
+
+Started GET "/cats/1" for 127.0.0.1 at 2019-02-25 14:39:25 -0800
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:17
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.9ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:25
+  Rendered cats/show.html.erb within layouts/application (10.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "prNYs8LfJufslFSObn4ocA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+Completed 200 OK in 35ms (Views: 30.2ms | ActiveRecord: 4.0ms)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2019-02-25 14:50:08 -0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5wazpXF8seYQXKDCXoRUgkUeJp+i//r4x7/YN+YbijIMcLiZGsPhIBMUxyo5YDdsdeA6Hy4bmZ9tU6iWJ60ChA=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "prNYs8LfJufslFSObn4ocA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:27
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "arash12"], ["id", 6], ["LIMIT", 1]]
+  ↳ app/models/user.rb:27
+  [1m[36mUser Update (1.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "2H0WKU0aIG--g8zSROA7tg"], ["updated_at", "2019-02-25 22:50:08.871110"], ["id", 6]]
+  ↳ app/models/user.rb:27
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:27
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 32ms (ActiveRecord: 15.0ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2019-02-25 14:50:08 -0800
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 76ms (Views: 75.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cat_rental_requests" for 127.0.0.1 at 2019-02-25 14:50:49 -0800
+  
+ActionController::RoutingError (No route matches [GET] "/cat_rental_requests"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/cat_rental_requests/new" for 127.0.0.1 at 2019-02-25 14:50:55 -0800
+Processing by CatRentalRequestsController#new as HTML
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (1.1ms)
+  [1m[36mCat Load (1.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:14
+  Rendered cat_rental_requests/new.html.erb within layouts/application (62.8ms)
+Completed 200 OK in 132ms (Views: 91.3ms | ActiveRecord: 19.3ms)
+
+
+Started POST "/cat_rental_requests" for 127.0.0.1 at 2019-02-25 14:51:12 -0800
+Processing by CatRentalRequestsController#create as HTML
+  Parameters: {"authenticity_token"=>"pVm+N1p91DUIEej9ZK0Ko/HBk/heM1chZBPJDkR/TzlOL7ULMcKE8wtZjxUDSWlNwT+PeNLXNEbO/7mvhcnHjw==", "cat_rental_request"=>{"cat_id"=>"1", "start_date"=>"2019-02-26", "end_date"=>"2019-02-28"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+  [1m[36mCatRentalRequest Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" IS NOT NULL AND "cat_rental_requests"."cat_id" = $1 AND NOT (start_date > '2019-02-28' OR end_date < '2019-02-26') AND (status = 'APPROVED') LIMIT $2[0m  [["cat_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cat_rental_request.rb:143
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+  [1m[36mCatRentalRequest Create (41.3ms)[0m  [1m[32mINSERT INTO "cat_rental_requests" ("cat_id", "end_date", "start_date", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cat_id", 1], ["end_date", "2019-02-28"], ["start_date", "2019-02-26"], ["status", "PENDING"], ["created_at", "2019-02-25 22:51:12.961255"], ["updated_at", "2019-02-25 22:51:12.961255"]]
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+Redirected to http://localhost:3000/cats/1
+Completed 302 Found in 60ms (ActiveRecord: 45.0ms)
+
+
+Started GET "/cats/1" for 127.0.0.1 at 2019-02-25 14:51:13 -0800
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:17
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (1.1ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:25
+  Rendered cats/_req_tr.html.erb (1.4ms)
+  Rendered cats/show.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 47ms (Views: 43.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/cat_rental_requests/1/approve" for 127.0.0.1 at 2019-02-25 14:51:19 -0800
+Processing by CatRentalRequestsController#approve as HTML
+  Parameters: {"authenticity_token"=>"uKj9jawMmMP8l5D3STFVjQXticpxack7/2H3rZDz3ZxT3vaxx7PIBf/f9x8u1TZjNROVSv2NqlxVjYcMUUVVKg==", "id"=>"1"}
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: cat_rental_request:
+  app/controllers/cat_rental_requests_controller.rb:47:in `cat_rental_request_params'
+  app/controllers/cat_rental_requests_controller.rb:5:in `cat_owner_decision!'
+
+Started POST "/__better_errors/5805fbafe0549ab9/variables" for 127.0.0.1 at 2019-02-25 14:51:19 -0800
+Started POST "/cat_rental_requests/1/deny" for 127.0.0.1 at 2019-02-25 14:59:38 -0800
+Processing by CatRentalRequestsController#deny as HTML
+  Parameters: {"authenticity_token"=>"uKj9jawMmMP8l5D3STFVjQXticpxack7/2H3rZDz3ZxT3vaxx7PIBf/f9x8u1TZjNROVSv2NqlxVjYcMUUVVKg==", "id"=>"1"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::ParameterMissing - param is missing or the value is empty: cat_rental_request:
+  app/controllers/cat_rental_requests_controller.rb:47:in `cat_rental_request_params'
+  app/controllers/cat_rental_requests_controller.rb:5:in `cat_owner_decision!'
+
+Started POST "/__better_errors/8bba314a8e1e4642/variables" for 127.0.0.1 at 2019-02-25 14:59:38 -0800
+Started GET "/cats/1" for 127.0.0.1 at 2019-02-25 15:02:50 -0800
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (1.9ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:17
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (1.3ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:25
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/cats/_req_tr.html.erb:11
+  Rendered cats/_req_tr.html.erb (87.0ms)
+  Rendered cats/show.html.erb within layouts/application (121.9ms)
+Completed 500 Internal Server Error in 182ms (ActiveRecord: 89.1ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/cats/_req_tr.html.erb:11:in `_app_views_cats__req_tr_html_erb___1260798232093146347_70312828755920'
+  app/views/cats/show.html.erb:26:in `block in _app_views_cats_show_html_erb__2936883762205191588_70312804150140'
+  app/views/cats/show.html.erb:25:in `_app_views_cats_show_html_erb__2936883762205191588_70312804150140'
+  app/controllers/cats_controller.rb:18:in `show'
+
+Started POST "/__better_errors/3df02f84f15d491d/variables" for 127.0.0.1 at 2019-02-25 15:02:51 -0800
+Started POST "/__better_errors/3df02f84f15d491d/eval" for 127.0.0.1 at 2019-02-25 15:03:04 -0800
+Started POST "/__better_errors/3df02f84f15d491d/eval" for 127.0.0.1 at 2019-02-25 15:03:11 -0800
+Started POST "/__better_errors/3df02f84f15d491d/eval" for 127.0.0.1 at 2019-02-25 15:03:18 -0800
+Started GET "/cats/1" for 127.0.0.1 at 2019-02-25 15:04:31 -0800
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:17
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (1.2ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:25
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/cats/_req_tr.html.erb:11
+  Rendered cats/_req_tr.html.erb (33.6ms)
+  Rendered cats/show.html.erb within layouts/application (64.5ms)
+Completed 500 Internal Server Error in 106ms (ActiveRecord: 21.1ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/cats/_req_tr.html.erb:11:in `_app_views_cats__req_tr_html_erb___2829432660079276933_70258762770260'
+  app/views/cats/show.html.erb:26:in `block in _app_views_cats_show_html_erb__2500373202214471186_70258749137380'
+  app/views/cats/show.html.erb:25:in `_app_views_cats_show_html_erb__2500373202214471186_70258749137380'
+  app/controllers/cats_controller.rb:18:in `show'
+
+Started POST "/__better_errors/d6b6f75e3fddd976/variables" for 127.0.0.1 at 2019-02-25 15:04:32 -0800
+Started POST "/cat_rental_requests" for 127.0.0.1 at 2019-02-25 15:04:36 -0800
+Processing by CatRentalRequestsController#create as HTML
+  Parameters: {"authenticity_token"=>"pVm+N1p91DUIEej9ZK0Ko/HBk/heM1chZBPJDkR/TzlOL7ULMcKE8wtZjxUDSWlNwT+PeNLXNEbO/7mvhcnHjw==", "cat_rental_request"=>{"cat_id"=>"1", "start_date"=>"2019-02-26", "end_date"=>"2019-02-28"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+  [1m[36mCatRentalRequest Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" IS NOT NULL AND "cat_rental_requests"."cat_id" = $1 AND NOT (start_date > '2019-02-28' OR end_date < '2019-02-26') AND (status = 'APPROVED') LIMIT $2[0m  [["cat_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cat_rental_request.rb:143
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+  [1m[36mCatRentalRequest Create (1.2ms)[0m  [1m[32mINSERT INTO "cat_rental_requests" ("cat_id", "end_date", "start_date", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cat_id", 1], ["end_date", "2019-02-28"], ["start_date", "2019-02-26"], ["status", "PENDING"], ["created_at", "2019-02-25 23:04:36.276519"], ["updated_at", "2019-02-25 23:04:36.276519"]]
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+  [1m[35m (39.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+Redirected to http://localhost:3000/cats/1
+Completed 302 Found in 53ms (ActiveRecord: 42.9ms)
+
+
+Started GET "/cats/1" for 127.0.0.1 at 2019-02-25 15:04:36 -0800
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:17
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (2.3ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:25
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/cats/_req_tr.html.erb:11
+  Rendered cats/_req_tr.html.erb (17.9ms)
+  Rendered cats/show.html.erb within layouts/application (27.4ms)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 4.7ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/cats/_req_tr.html.erb:11:in `_app_views_cats__req_tr_html_erb___2829432660079276933_70258756625500'
+  app/views/cats/show.html.erb:26:in `block in _app_views_cats_show_html_erb__2500373202214471186_70258762900340'
+  app/views/cats/show.html.erb:25:in `_app_views_cats_show_html_erb__2500373202214471186_70258762900340'
+  app/controllers/cats_controller.rb:18:in `show'
+
+Started POST "/__better_errors/fa81fcc463255d82/variables" for 127.0.0.1 at 2019-02-25 15:04:36 -0800
+Started POST "/cat_rental_requests" for 127.0.0.1 at 2019-02-25 15:06:03 -0800
+Processing by CatRentalRequestsController#create as HTML
+  Parameters: {"authenticity_token"=>"pVm+N1p91DUIEej9ZK0Ko/HBk/heM1chZBPJDkR/TzlOL7ULMcKE8wtZjxUDSWlNwT+PeNLXNEbO/7mvhcnHjw==", "cat_rental_request"=>{"cat_id"=>"1", "start_date"=>"2019-02-26", "end_date"=>"2019-02-28"}}
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+  [1m[36mCatRentalRequest Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "cat_rental_requests" WHERE "cat_rental_requests"."id" IS NOT NULL AND "cat_rental_requests"."cat_id" = $1 AND NOT (start_date > '2019-02-28' OR end_date < '2019-02-26') AND (status = 'APPROVED') LIMIT $2[0m  [["cat_id", 1], ["LIMIT", 1]]
+  ↳ app/models/cat_rental_request.rb:143
+  [1m[36mCat Load (9.0ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+  [1m[36mCatRentalRequest Create (0.6ms)[0m  [1m[32mINSERT INTO "cat_rental_requests" ("cat_id", "end_date", "start_date", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["cat_id", 1], ["end_date", "2019-02-28"], ["start_date", "2019-02-26"], ["status", "PENDING"], ["created_at", "2019-02-25 23:06:03.206779"], ["updated_at", "2019-02-25 23:06:03.206779"]]
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+  [1m[35m (39.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cat_rental_requests_controller.rb:18
+Redirected to http://localhost:3000/cats/1
+Completed 302 Found in 62ms (ActiveRecord: 51.2ms)
+
+
+Started GET "/cats/1" for 127.0.0.1 at 2019-02-25 15:06:03 -0800
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT  "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:17
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (0.5ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY start_date[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:25
+  Rendered cats/_req_tr.html.erb (1.6ms)
+  Rendered cats/_req_tr.html.erb (0.4ms)
+  Rendered cats/_req_tr.html.erb (0.9ms)
+  Rendered cats/show.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 432ms (Views: 429.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/cats/1/edit" for 127.0.0.1 at 2019-02-25 15:06:12 -0800
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `cats' for nil:NilClass:
+  app/controllers/cats_controller.rb:5:in `already_owner_cat!'
+
+Started POST "/__better_errors/1065b10237f602ee/variables" for 127.0.0.1 at 2019-02-25 15:06:12 -0800
+Started POST "/__better_errors/1065b10237f602ee/eval" for 127.0.0.1 at 2019-02-25 15:06:26 -0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(723150122408807205)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddUserIdToCatRentalRequest (20190225230744)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (42.3ms)[0m  [1m[35mALTER TABLE "cat_rental_requests" ADD "user_id" integer NOT NULL[0m
+  ↳ db/migrate/20190225230744_add_user_id_to_cat_rental_request.rb:3
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(723150122408807205)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(723150122408807205)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddUserIdToCatRentalRequest (20190225230744)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "cat_rental_requests" ADD "user_id" integer NOT NULL[0m
+  ↳ db/migrate/20190225230744_add_user_id_to_cat_rental_request.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(723150122408807205)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(723150122408807205)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddUserIdToCatRentalRequest (20190225230744)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "cat_rental_requests" ADD "user_id" integer NOT NULL[0m
+  ↳ db/migrate/20190225230744_add_user_id_to_cat_rental_request.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(723150122408807205)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (42.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (277.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "ninety_nine_cats_development"[0m
+  ↳ bin/rails:4
+  [1m[35m (218.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "ninety_nine_cats_test"[0m
+  ↳ bin/rails:4
+  [1m[35m (538.9ms)[0m  [1m[35mCREATE DATABASE "ninety_nine_cats_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+  [1m[35m (447.3ms)[0m  [1m[35mCREATE DATABASE "ninety_nine_cats_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:4
+  [1m[35mSQL (2.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "cat_rental_requests" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (18.3ms)[0m  [1m[35mCREATE TABLE "cat_rental_requests" ("id" bigserial primary key, "cat_id" integer NOT NULL, "end_date" date NOT NULL, "start_date" date NOT NULL, "status" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE  INDEX  "index_cat_rental_requests_on_cat_id" ON "cat_rental_requests"  ("cat_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cats" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "cats" ("id" bigserial primary key, "birth_date" date NOT NULL, "color" character varying NOT NULL, "name" character varying NOT NULL, "sex" character varying NOT NULL, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_cats_on_user_id" ON "cats"  ("user_id")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:40
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:40
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190225200033)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190223211926),
+(20190223210721),
+(20170713053554),
+(20170713053709);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-02-25 23:58:20.269747"], ["updated_at", "2019-02-25 23:58:20.269747"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cat_rental_requests" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "cat_rental_requests" ("id" bigserial primary key, "cat_id" integer NOT NULL, "end_date" date NOT NULL, "start_date" date NOT NULL, "status" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_cat_rental_requests_on_cat_id" ON "cat_rental_requests"  ("cat_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "cats" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "cats" ("id" bigserial primary key, "birth_date" date NOT NULL, "color" character varying NOT NULL, "name" character varying NOT NULL, "sex" character varying NOT NULL, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_cats_on_user_id" ON "cats"  ("user_id")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:40
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:40
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/schema.rb:40
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190225200033)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190223211926),
+(20190223210721),
+(20170713053554),
+(20170713053709);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-02-25 23:58:20.417512"], ["updated_at", "2019-02-25 23:58:20.417512"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2019-02-25 23:58:20.422994"], ["key", "environment"]]
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(723150122408807205)[0m
+  ↳ bin/rails:4
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to AddUserIdToCatRentalRequest (20190225230744)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "cat_rental_requests" ADD "user_id" integer NOT NULL[0m
+  ↳ db/migrate/20190225230744_add_user_id_to_cat_rental_request.rb:3
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_cat_rental_requests_on_user_id" ON "cat_rental_requests"  ("user_id")[0m
+  ↳ db/migrate/20190225230744_add_user_id_to_cat_rental_request.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190225230744"]]
+  ↳ bin/rails:4
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:4
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(723150122408807205)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
