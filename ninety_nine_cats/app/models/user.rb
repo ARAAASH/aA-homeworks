@@ -12,7 +12,7 @@ class User < ApplicationRecord
     class_name: :Cat,
     dependent: :destroy
 
-  has_many :requests
+  has_many :requests,
     class_name: :CatRentalRequest,
     foreign_key: :user_id,
     primary_key: :id,
