@@ -10,4 +10,9 @@ class Album < ApplicationRecord
     primary_key: :id,
     optional: true
 
+  has_many :tracks,
+    class_name: :Track,
+    foreign_key: :album_id,
+    primary_key: :id
+
 end
