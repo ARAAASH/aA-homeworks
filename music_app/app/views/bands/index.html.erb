@@ -1,3 +1,6 @@
+<a
+  style="display: flex; flex-direction: column; align-items: flex-end"
+   href="<%=new_band_url  %>">New Band</a>
 <h1>All the bands</h1>
 
 <% @bands.each do |band| %>
@@ -5,5 +8,11 @@
     <a href="<%= band_url(band) %>">
       <%= band.name %>
     </a>
+    <form class="default_form" action="<%=band_url(band)  %>" method="post">
+      <%= auth_token %>
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete">
+    </form>
   </li>
 <% end %>
+<br>
