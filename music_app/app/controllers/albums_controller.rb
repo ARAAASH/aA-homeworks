@@ -12,14 +12,15 @@ class AlbumsController < ApplicationController
     if @album.nil?
       render json: "Couldn\'t find"
     else
-      render json: @album
+      render :show
     end
   end
 
   def new
     #/bands/:band_id/albums/new
-    @band = Band.find_by(band_id: params[:band_id])
+    @band = Band.find_by(id: params[:band_id])
     @album = Album.new
+    @bands = Band.all
     render :new
   end
 
@@ -27,7 +28,7 @@ class AlbumsController < ApplicationController
     # POST:  /albums
     @album = Album.new(album_params)
     if @album.save!
-      render json: @album
+      redirect_to album_url(@album)
     else
       render json: "not saved"
     end
@@ -36,6 +37,7 @@ class AlbumsController < ApplicationController
   def edit
     # /albums/:id/edit
     @album = find_by(id: params[:id])
+    @bands = Band.all
     render :edit
   end
 
@@ -43,7 +45,7 @@ class AlbumsController < ApplicationController
     # PATCH: /albums/:id
     @album = find_by(id: params[:id])
     if @album.update_attributes(album_params)
-      render :json @album
+      redirect_to album_url(@album)
     else
       render json: "Couldn\'t update"
     end
@@ -53,7 +55,7 @@ class AlbumsController < ApplicationController
     # DELETE: /albums/:id
     @album = Album.find_by(id: params[:id])
     if @album.destroy
-      render json: @album
+      redirect_to band_url(@album.band)
     else
       redner json: "Couldn\'t destroy"
     end

@@ -1,7 +1,8 @@
 class Album < ApplicationRecord
+  KIND = %w(studio live)
 
   validates :title, :year, :band_id, presence: true
-  validates :type, inclusion: { in: %w(studio live)  }
+  validates :kind, inclusion: { in: KIND }
 
   belongs_to :band,
     class_name: :Band,
