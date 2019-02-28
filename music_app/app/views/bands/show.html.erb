@@ -1,0 +1,10 @@
+<h1> <%= @band.name %> </h1>
+
+<p>
+  This band has been creted at <%= @band.created_at %>
+</p>
+<br>
+<a href="<%= edit_band_url(@band) %>"> Edit </a>
+<a style="display: flex;
+      flex-direction: column;
+      align-items: flex-end;" href="<%= bands_url%>"> all the bands</a>

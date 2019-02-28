@@ -11,10 +11,10 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
     if @user.nil?
-      redirect_to new_session_url
+      render json: "user not existed"
     else
       log_in!(@user)
-      redirect_to user_url(@user)
+      redirect_to bands_url
     end
 
   end

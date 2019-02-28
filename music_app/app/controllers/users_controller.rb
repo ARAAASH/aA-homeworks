@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save!
       log_in!(@user)
-      render json: @user
+      # render json: @user
+      redirect_to bands_url
     else
       render json: "nope"
     end
