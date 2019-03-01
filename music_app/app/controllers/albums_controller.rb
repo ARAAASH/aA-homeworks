@@ -1,11 +1,5 @@
 class AlbumsController < ApplicationController
 
-  def index
-    # /albums
-    @albums = Album.all
-    render json: @albums
-  end
-
   def show
     #/albums/:id
     @album = Album.find_by(id: params[:id])
