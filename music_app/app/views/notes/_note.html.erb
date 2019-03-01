@@ -6,13 +6,15 @@
     <br>
     Authored by: <%= note.user.email %>
     <br>
-    <form action="<%= note_url(note) %>" method="post">
-      <%= auth_token %>
-      <input type="hidden" name="_method" value="DELETE">
+    <% if current_user.id == note.user_id %>
+      <form action="<%= note_url(note) %>" method="post">
+        <%= auth_token %>
+        <input type="hidden" name="_method" value="DELETE">
 
-      <input type="submit" value="Delete">
+        <input type="submit" value="Delete">
 
-    </form>
+      </form>
+    <% end %>
     <br>
   <% end %>
 </p>

@@ -2,7 +2,7 @@
 
 <p><%= @track.lyrics %></p>
 
-<%= render "notes/form" %>
+<%= render "notes/form", track: @track %>
 <br>
 
 <%= render "notes/note", notes: @track.notes %>
