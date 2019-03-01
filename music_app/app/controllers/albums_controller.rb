@@ -1,5 +1,7 @@
 class AlbumsController < ApplicationController
 
+  before_action :logged_in_user!
+  
   def show
     #/albums/:id
     @album = Album.find_by(id: params[:id])
