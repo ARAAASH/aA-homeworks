@@ -10,6 +10,8 @@ class Band < ApplicationRecord
 
   has_many :tracks,
     through: :albums,
-    source: :tracks
+    source: :tracks,
+    dependent: :destroy
+
 
 end
