@@ -5,7 +5,12 @@
 <% yr = album.persisted? ? album.year : "" %>
 <% button = album.persisted? ? "Update" : "Add" %>
 
+<% unless album.errors.full_messages.empty? %>
+  <div>
+    <%= album.errors.full_messages%>
+  </div>
 
+<% end %>
 <form action="<%= action %>" method="post">
   <%= auth_token %>
   <input type="hidden" name="_method" value="<%= method %>">

@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
 
   before_action :logged_in_user!
-  
+
   def show
     #/albums/:id
     @album = Album.find_by(id: params[:id])
@@ -23,10 +23,12 @@ class AlbumsController < ApplicationController
   def create
     # POST:  /albums
     @album = Album.new(album_params)
-    if @album.save!
+
+    if @album.save
       redirect_to album_url(@album)
     else
-      render json: "not saved"
+      redirect_to new_band_album_url(@album.band)
+      # render json: "not saved"
     end
   end
 

@@ -42,6 +42,7 @@ class TracksController < ApplicationController
 
   def update
     @track = Track.find_by(id: params[:id])
+
     if @track.update_attributes(track_params)
       redirect_to track_url(@track)
     else
