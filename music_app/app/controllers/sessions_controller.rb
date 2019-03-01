@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
       params[:user][:password]
     )
     if @user.nil?
-      render json: "user not existed"
+      flash.now[:errors] = "Credentials were wrong"
+      render :new
     else
       log_in!(@user)
       redirect_to bands_url

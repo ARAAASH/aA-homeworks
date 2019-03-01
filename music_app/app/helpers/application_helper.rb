@@ -9,10 +9,13 @@ module ApplicationHelper
   end
 
   def ugly_lyrics(lyrics)
-    lyrics_arr = lyrics.split("\n")
+    lyrics_arr = lyrics.lines
+    str = ""
+    lyrics_arr.each do |line|
+      str << "&#9835; #{h(line)}"
+    end
 
-    "<pre>#{h("&#9835".html_safe+ lyrics)}
-    </pre>".html_safe
+    "<pre>#{str}</pre>".html_safe
 
   end
 end

@@ -9,12 +9,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       log_in!(@user)
-      # render json: @user
       redirect_to bands_url
     else
-      render json: "nope"
+      flash.now[:errors] = @user.errors.full_messages
+      render :new
+     
     end
   end
 

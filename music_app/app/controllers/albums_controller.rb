@@ -27,7 +27,12 @@ class AlbumsController < ApplicationController
     if @album.save
       redirect_to album_url(@album)
     else
-      redirect_to new_band_album_url(@album.band)
+      flash.now[:errors] = @album.errors.full_messages
+      # render json: flash.now[:errors]
+      @band = @album.band
+      @bands = Band.all
+      render :new
+      # redirect_to new_band_album_url(@album.band)
       # render json: "not saved"
     end
   end
@@ -45,7 +50,8 @@ class AlbumsController < ApplicationController
     if @album.update_attributes(album_params)
       redirect_to album_url(@album)
     else
-      render json: "Couldn\'t update"
+      flash.now[:errors] = @album.errors.full_messages
+      redirect_to edit_album_url(@album)
     end
   end
 

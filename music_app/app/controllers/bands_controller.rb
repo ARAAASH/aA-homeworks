@@ -23,9 +23,10 @@ class BandsController < ApplicationController
 
   def create
     @band = Band.new(band_params)
-    if @band.save!
+    if @band.save
       redirect_to band_url(@band)
     else
+      flash.now[:errors] = @band.errors.full_messages
       redirect_to new_band_url
     end
   end
@@ -44,7 +45,8 @@ class BandsController < ApplicationController
     if @band.update_attributes(band_params)
       redirect_to band_url
     else
-      render json: "Couldn\'t update"
+      flash.now[:errors] = @band.errors.full_messages
+      render :edit
     end
   end
 

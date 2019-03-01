@@ -6,7 +6,8 @@ class TracksController < ApplicationController
     # /tracks/:id
     @track = Track.find_by(id: params[:id])
     if @track.nil?
-      render json: "Couldn\'t find"
+      flash.now[:errors] = "Couldn\'t find"
+      render :show
     else
       render :show
     end
@@ -22,10 +23,13 @@ class TracksController < ApplicationController
 
   def create
     @track = Track.new(track_params)
-    if @track.save!
+    if @track.save
       redirect_to track_url(@track)
     else
-      render json: "Couldn\'t save"
+      @albums = Album.all
+      @album = Album.find_by(id: params[:album_id])
+      flash.now[errors] = @track.errors.full_messages
+      render :new
     end
   end
 
@@ -34,7 +38,8 @@ class TracksController < ApplicationController
     @track = Track.find_by(id: params[:id])
     @albums = Album.all
     if @track.nil?
-      render json: "Couldn\'t find"
+      flash.now[:errors] = "Couldn\'t find"
+      render :edit
     else
       render :edit
     end
@@ -46,7 +51,9 @@ class TracksController < ApplicationController
     if @track.update_attributes(track_params)
       redirect_to track_url(@track)
     else
-      render json: "Couldn\'t update"
+      @albums = Album.all
+      flash.now[errors] = @track.errors.full_messages
+      render :edit
     end
   end
 
@@ -55,7 +62,8 @@ class TracksController < ApplicationController
     if @track.destroy
       redirect_to album_url(@track.album)
     else
-      redner json: "Couldn\'t destroy"
+      flash.now[:errors] = "Couldn\'t destroy"
+      # redner json: "Couldn\'t destroy"
     end
   end
 
