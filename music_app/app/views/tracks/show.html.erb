@@ -2,6 +2,11 @@
 
 <p><%= @track.lyrics %></p>
 
+<%= render "notes/form" %>
+<br>
+
+<%= render "notes/note", notes: @track.notes %>
+
 <h2>Links</h2>
 <a href="<%= edit_track_url(@track) %>">Edit Track</a>
 

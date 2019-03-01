@@ -1,0 +1,18 @@
+<h2>Notes</h2>
+
+<p>
+  <% notes.each do |note|%>
+    <%= note.comment %>
+    <br>
+    Authored by: <%= note.user.email %>
+    <br>
+    <form action="<%= note_url(note) %>" method="post">
+      <%= auth_token %>
+      <input type="hidden" name="_method" value="DELETE">
+
+      <input type="submit" value="Delete">
+
+    </form>
+    <br>
+  <% end %>
+</p>
