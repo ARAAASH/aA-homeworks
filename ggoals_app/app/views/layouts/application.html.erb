@@ -17,6 +17,16 @@
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Log out">
       </form>
+    <% else %>
+      <form action="<%= new_user_url%>" method="GET">
+        <%= auth_token %>
+        <input type="submit" value="Sing Up">
+      </form>
+      OR
+      <form action="<%= new_session_url%>" method="GET">
+        <%= auth_token %>
+        <input type="submit" value="Log In">
+      </form>
     <% end %>
     
 

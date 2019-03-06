@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GgoalsApp</title>
+    
+    
+
+    <link rel="stylesheet" media="all" href="/assets/application-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" data-turbolinks-track="reload" />
+    <script src="/assets/application-c2183ea8f9e0179587d76b296815b5607624492b750c23a7597b228dadb6c163.js" data-turbolinks-track="reload"></script>
+  </head>
+
+  <body>
+    
+      <form action="http://www.example.com/users/new" method="GET">
+        <input type="hidden" name="authenticity_token" 
+      value="vdmhgD5TUgIuFrRiAVsYeRWRtKd/TwWJZyUU6nJ4YyJ3+AzPIHiS6HpfFxT9I3zHjClOsdKb75SREaaSb9//aQ=="/>
+        <input type="submit" value="Sing Up">
+      </form>
+      OR
+      <form action="http://www.example.com/session/new" method="GET">
+        <input type="hidden" name="authenticity_token" 
+      value="/3xzqmfgP/hN9+L/qvjDo++bhdyB01TY10VIcCKFrUU1Xd7lecv/Ehm+QYlWgKcddiN/yiwHvsUhcfoIPyIxDg=="/>
+        <input type="submit" value="Log In">
+      </form>
+    
+
+    <h1>Sign in!</h1>
+
+<form action="http://www.example.com/session" method="post">
+  <input type="hidden" name="authenticity_token" 
+      value="L2/tCCJbeDzpINnVr7+F9ktgiKZhMTwU+LWP3PFI0s7lTkBHPHC41r1peqNTx+FI0thysMzl1gkOgT2k7O9OhQ=="/>
+
+  <label for="email">Email</label>
+  <input id="email" type="text" name="user[email]">
+  <br>
+
+  <label for="password">Password</label>
+  <input id="password" type="password" name="user[password]">
+  <br>
+
+  <input type="submit" value="Sign in">
+</form>
+  </body>
+</html>

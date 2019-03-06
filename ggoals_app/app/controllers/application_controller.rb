@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def require_current_user!
+    redirect_to new_session_url if current_user.nil?
+  end
+
   def log_in!(user)
     @current_user = user
     session[:session_token] = @current_user.session_token
