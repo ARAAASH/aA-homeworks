@@ -1,7 +1,7 @@
-<h1>Log in!</h1>
+<h2 class="page-header">Log in!</h2>
 
 <%= render 'layouts/errors' %>
-<form action="<%= session_url %>" method="post">
+<form class="form-container" action="<%= session_url %>" method="post">
   <%= auth_token %>
 
   <label for="email">Email</label>
@@ -12,5 +12,5 @@
   <input id="password" type="password" name="user[password]">
   <br>
 
-  <input type="submit" value="Log in">
+  <input class="button" type="submit" value="Log in">
 </form>
