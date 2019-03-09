@@ -9,7 +9,6 @@ span, article, footer, time, small {
   padding: 0;
   border: 0;
   outline: 0;
-
   font: inherit;
   color: inherit;
   text-align: inherit;
@@ -17,7 +16,6 @@ span, article, footer, time, small {
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
-
 }
 
 ul {
@@ -36,10 +34,16 @@ input[type="text"],
 input[type="submit"],
 textarea,
 button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
   -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 button,
 input[type="submit"] {
   cursor: pointer;
 }
+
