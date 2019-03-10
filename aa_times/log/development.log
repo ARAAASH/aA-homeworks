@@ -1,0 +1,68 @@
+Started GET "/cats" for ::1 at 2019-03-09 14:11:52 -0800
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from block (3 levels) in <class:Railtie> at /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.0.7.1/lib/active_record/railtie.rb:113)
+
+Gem::LoadError - can't activate sqlite3 (~> 1.3.6), already activated sqlite3-1.4.0. Make sure all dependencies are added to Gemfile.:
+
+Started GET "/" for ::1 at 2019-03-09 14:11:53 -0800
+
+ActiveRecord::ConnectionNotEstablished - No connection pool with id primary found.:
+
+Started POST "/__better_errors/515e023151dd1646/variables" for ::1 at 2019-03-09 14:11:54 -0800
+Started GET "/" for ::1 at 2019-03-09 14:13:12 -0800
+
+ActiveRecord::ConnectionNotEstablished - No connection pool with id primary found.:
+
+Started POST "/__better_errors/dcd5ad21da334839/variables" for ::1 at 2019-03-09 14:13:12 -0800
+Started GET "/" for ::1 at 2019-03-09 14:14:17 -0800
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from block (3 levels) in <class:Railtie> at /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.0.7.1/lib/active_record/railtie.rb:113)
+
+Gem::LoadError - can't activate sqlite3 (~> 1.3.6), already activated sqlite3-1.4.0. Make sure all dependencies are added to Gemfile.:
+
+Started POST "/__better_errors/1b23881fbc61748f/variables" for ::1 at 2019-03-09 14:14:17 -0800
+Started GET "/" for ::1 at 2019-03-09 14:14:20 -0800
+
+ActiveRecord::ConnectionNotEstablished - No connection pool with id primary found.:
+
+Started POST "/__better_errors/59d0761d0efb2471/variables" for ::1 at 2019-03-09 14:14:21 -0800
+Started GET "/" for ::1 at 2019-03-09 14:14:21 -0800
+
+ActiveRecord::ConnectionNotEstablished - No connection pool with id primary found.:
+
+Started POST "/__better_errors/84899fba43faf641/variables" for ::1 at 2019-03-09 14:14:21 -0800
+Started GET "/" for ::1 at 2019-03-09 14:14:22 -0800
+
+ActiveRecord::ConnectionNotEstablished - No connection pool with id primary found.:
+
+Started POST "/__better_errors/bd6465719770da43/variables" for ::1 at 2019-03-09 14:14:22 -0800
+Started GET "/" for ::1 at 2019-03-09 14:14:22 -0800
+
+ActiveRecord::ConnectionNotEstablished - No connection pool with id primary found.:
+
+Started POST "/__better_errors/df4110c9382a7d41/variables" for ::1 at 2019-03-09 14:14:22 -0800
+Started GET "/" for ::1 at 2019-03-09 14:14:23 -0800
+
+ActiveRecord::ConnectionNotEstablished - No connection pool with id primary found.:
+
+Started POST "/__better_errors/c944a4a5660a3f42/variables" for ::1 at 2019-03-09 14:14:23 -0800
+Started GET "/" for ::1 at 2019-03-09 14:14:23 -0800
+
+ActiveRecord::ConnectionNotEstablished - No connection pool with id primary found.:
+
+Started POST "/__better_errors/09a20854195ebf5c/variables" for ::1 at 2019-03-09 14:14:23 -0800
+Started GET "/" for ::1 at 2019-03-09 14:14:42 -0800
+
+ActiveRecord::ConnectionNotEstablished - No connection pool with id primary found.:
+
+Started POST "/__better_errors/8fc2ec8745f4296c/variables" for ::1 at 2019-03-09 14:14:42 -0800
+Started POST "/__better_errors/8fc2ec8745f4296c/eval" for ::1 at 2019-03-09 14:14:45 -0800
+Started GET "/cats" for ::1 at 2019-03-09 17:42:23 -0800
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from block (3 levels) in <class:Railtie> at /Users/arash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.0.7.1/lib/active_record/railtie.rb:113)
+
+Gem::LoadError - can't activate sqlite3 (~> 1.3.6), already activated sqlite3-1.4.0. Make sure all dependencies are added to Gemfile.:
+
+Started POST "/__better_errors/9e3fbb3925e9a8d2/variables" for ::1 at 2019-03-09 17:42:24 -0800
+Started GET "/" for ::1 at 2019-03-09 17:42:28 -0800
+
+ActiveRecord::ConnectionNotEstablished - No connection pool with id primary found.:
+
+Started POST "/__better_errors/77486b4c94d048c3/variables" for ::1 at 2019-03-09 17:42:29 -0800
