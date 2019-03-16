@@ -1,18 +1,22 @@
 .main-nav {
-
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
 }
 
 .left-nav > ul,
 .right-nav > ul {
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .left-nav > ul > li {
-
+  font-family: $sans-serif;
 }
 
 .right-nav > ul > li {
-
+  font-family: $serif;
 }
 
 .right-nav > ul > li:last-of-type {
