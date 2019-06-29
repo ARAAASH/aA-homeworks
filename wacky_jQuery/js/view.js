@@ -22,7 +22,7 @@ View.prototype.exercise1 = function () {
   //Challenge: Give every square the class 'orange'
   //Result: Every square should turn orange (we already have a CSS rule)
 
-  //your code here!
+  $('li').addClass("orange");
 };
 
 View.prototype.exercise2 = function () {
