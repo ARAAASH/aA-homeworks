@@ -12,7 +12,7 @@ function addTwoNumbers(callback) {
   reader.question('enter first num:', function(num1Srting) {
     reader.question('enter second num: ', function(num2String) {
       const num1 = parseInt(num1Srting);
-      const num2 = parseInt(num2String);
+      const num2 = parseInt(num2Srting);
       callback(num1 + num2);
     });
   });
